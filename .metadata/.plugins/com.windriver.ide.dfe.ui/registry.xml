@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_11" class="java.beans.XMLDecoder"> 
+ <string>*** NODE ***</string> 
+ <string>Backends</string> 
+ <string>*** END ***</string> 
+ <string>BreakpointsSkipAll</string> 
+ <boolean>false</boolean> 
+ <string>*** NODE ***</string> 
+ <string>Configs</string> 
+ <string>*** END ***</string> 
+ <string>*** NODE ***</string> 
+ <string>File</string> 
+ <string>*** END ***</string> 
+ <string>Platform</string> 
+ <string>Eclipse</string> 
+ <string>*** NODE ***</string> 
+ <string>User</string> 
+ <string>*** END ***</string> 
+ <string>WorkspacePath</string> 
+ <string>E:\FRC\.metadata\.plugins\com.windriver.ide.dfe.ui</string> 
+ <string>*** END ***</string> 
+</java> 
