@@ -8,8 +8,7 @@
 
 
 class ThreeStateSolenoid {
-
-public
+	
 	typedef enum {
 		kLeftState,
 		kRightState,

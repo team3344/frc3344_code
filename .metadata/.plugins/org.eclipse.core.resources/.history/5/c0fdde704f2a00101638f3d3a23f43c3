@@ -1,0 +1,16 @@
+
+#include "ThreeStateSolenoid.h"
+
+
+
+ThreeStateSolenoid(UINT32 slot, UINT32 leftChannel, UINT32 rightChannel);
+	~ThreeStateSolenoid();
+	
+	
+	void hold();
+	void fireLeft();
+	void fireRight();
+	void setState(State s);
+	State getState();
+	
+

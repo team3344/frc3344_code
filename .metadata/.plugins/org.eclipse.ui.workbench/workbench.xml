@@ -8,7 +8,7 @@
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="153" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="130" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.windriver.analysis.windview.actionSet" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="com.windriver.ide.target.ui.actionset.global" itemType="typeToolBarContribution" x="38" y="22"/>
@@ -33,6 +33,9 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
@@ -41,13 +44,25 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/FRC2011/FRC2011.cpp"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="304"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ThreeStateSolenoid.cpp" partName="ThreeStateSolenoid.cpp" path="E:/FRC/FRC2011/ThreeStateSolenoid.cpp" title="ThreeStateSolenoid.cpp" tooltip="FRC2011/ThreeStateSolenoid.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="ThreeStateSolenoid.cpp" partName="ThreeStateSolenoid.cpp" path="C:/Users/fcboe/Desktop/frc3344_code/FRC2011/ThreeStateSolenoid.cpp" title="ThreeStateSolenoid.cpp" tooltip="FRC2011/ThreeStateSolenoid.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/FRC2011/ThreeStateSolenoid.cpp"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="424"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="ThreeStateSolenoid.h" partName="ThreeStateSolenoid.h" path="E:/FRC/FRC2011/ThreeStateSolenoid.h" title="ThreeStateSolenoid.h" tooltip="FRC2011/ThreeStateSolenoid.h" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ThreeStateSolenoid.h" partName="ThreeStateSolenoid.h" path="C:/Users/fcboe/Desktop/frc3344_code/FRC2011/ThreeStateSolenoid.h" title="ThreeStateSolenoid.h" tooltip="FRC2011/ThreeStateSolenoid.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/FRC2011/ThreeStateSolenoid.h"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="70"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="195"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Solenoid.h" partName="Solenoid.h" title="Solenoid.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Solenoid.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Solenoid.h"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="570"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Relay.h" partName="Relay.h" title="Relay.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Relay.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.h"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="1223"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Relay.cpp" partName="Relay.cpp" title="Relay.cpp" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Relay.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.cpp"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2443"/>
 </editor>
 </editors>
 <views>
@@ -66,6 +81,9 @@
 <expanded>
 <element path="Conn///Mark.Local"/>
 </expanded>
+<selection>
+<element path="Conn///Mark.Local"/>
+</selection>
 </viewState>
 </view>
 <view id="com.windriver.ide.ui.build.WRBuildConsoleView" partName="Build Console">
@@ -264,54 +282,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/FRC2011/FRC2011"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/FRC2011/FRC2011.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRC2011/FRC2011.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/BuiltinDefaultCode/BuiltinDefaultCode.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRC2011/ThreeStateSolenoid.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRC2011/ThreeStateSolenoid.h"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Solenoid.h"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRC2011/ThreeStateSolenoid.cpp"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.cpp"/>
 </editors>
-<item historyLabel="FRC2011" index="0">
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="427" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="484" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="427" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="331" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="350" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="370" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="195" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="Relay.h" index="2">
 <position/>
 </item>
-<item historyLabel="FRC2011.cpp" index="1">
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="195" y="0"/>
+</item>
+<item historyLabel="Relay.h" index="2">
+<position info="not_deleted" x="1100" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="232" y="0"/>
+</item>
+<item historyLabel="Relay.h" index="2">
+<position info="not_deleted" x="1223" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="Relay.h" index="2">
+<position info="not_deleted" x="1223" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="315" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="315" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="133" y="0"/>
+</item>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="133" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="86" y="0"/>
+</item>
+<item historyLabel="Relay.cpp" index="4">
 <position/>
 </item>
-<item historyLabel="FRC2011.cpp" index="2">
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
 <position/>
 </item>
-<item historyLabel="BuiltinDefaultCode.cpp" index="3">
-<position/>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="608" y="0"/>
 </item>
-<item historyLabel="FRC2011.cpp" index="2">
-<position/>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="33" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.cpp" index="4">
-<position/>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="567" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.h" index="5">
-<position/>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.cpp" index="4">
-<position info="not_deleted" x="67" y="0"/>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="33" y="0"/>
 </item>
-<item historyLabel="FRC2011.cpp" index="2">
-<position info="not_deleted" x="304" y="0"/>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.cpp" index="4">
-<position info="not_deleted" x="2" y="0"/>
+<item historyLabel="Solenoid.h" index="1">
+<position info="not_deleted" x="570" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.h" index="5">
-<position/>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="2590" y="0"/>
 </item>
-<item historyLabel="FRC2011.cpp" index="2">
-<position info="not_deleted" x="304" y="0"/>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="195" y="0"/>
 </item>
-<item historyLabel="ThreeStateSolenoid.h" index="5">
-<position info="not_deleted" x="91" y="0"/>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="564" y="0"/>
 </item>
-<item active="true" historyLabel="ThreeStateSolenoid.h" index="5">
-<position info="not_deleted" x="89" y="0"/>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="2590" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="295" y="0"/>
+</item>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="2362" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.h" index="0">
+<position info="not_deleted" x="195" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="295" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="449" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="556" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="497" y="0"/>
+</item>
+<item historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="456" y="0"/>
+</item>
+<item historyLabel="Relay.cpp" index="4">
+<position info="not_deleted" x="2443" y="0"/>
+</item>
+<item active="true" historyLabel="ThreeStateSolenoid.cpp" index="3">
+<position info="not_deleted" x="456" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -331,6 +456,15 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Relay.cpp" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Relay.cpp">
+<persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Relay.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Relay.h">
+<persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Solenoid.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Solenoid.h">
+<persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Solenoid.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ThreeStateSolenoid.h" tooltip="FRC2011/ThreeStateSolenoid.h">
 <persistable path="/FRC2011/ThreeStateSolenoid.h"/>
 </file>
@@ -345,9 +479,6 @@
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="DriverStation.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\DriverStation.h">
 <persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/DriverStation.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Relay.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Relay.h">
-<persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Relay.h"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Joystick.h" tooltip="C:\WindRiver\WPILib\WPILibC++Source20110106rev2242\WPILib\Joystick.h">
 <persistable uri="file:/C:/WindRiver/WPILib/WPILibC++Source20110106rev2242/WPILib/Joystick.h"/>

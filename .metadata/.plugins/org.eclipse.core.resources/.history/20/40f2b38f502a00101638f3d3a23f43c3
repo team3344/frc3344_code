@@ -24,12 +24,12 @@ ThreeStateSolenoid::~ThreeStateSolenoid()
 
 // States
 
-void ThreeStateSolenoid::hold()
+ThreeStateSolenoid::hold()
 {
 	
 }
 
-void ThreeStateSolenoid::fireLeft()
+ThreeStateSolenoid::fireLeft()
 {
 	
 	

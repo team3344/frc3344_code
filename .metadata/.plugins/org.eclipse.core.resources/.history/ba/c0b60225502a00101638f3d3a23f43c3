@@ -2,6 +2,10 @@
 #include "ThreeStateSolenoid.h"
 
 
+
+
+	~ThreeStateSolenoid();
+	
 	void setState(State s);
 	State getState();
 	
@@ -24,12 +28,12 @@ ThreeStateSolenoid::~ThreeStateSolenoid()
 
 // States
 
-void ThreeStateSolenoid::hold()
+ThreeStateSolenoid::hold()
 {
 	
 }
 
-void ThreeStateSolenoid::fireLeft()
+ThreeStateSolenoid::fireLeft()
 {
 	
 	
