@@ -1,0 +1,32 @@
+
+#NOTE: for all of these commands, you must be in the right folder.
+cd "directory"
+
+
+
+#	I just made some changes and I want to commit them
+#	replace message with info about what you just changed
+git add --all
+git commit -m 'message'
+
+
+
+
+#	get the latest changes from GitHub
+#	do this often, so we don't have merge issues with ppl changing the save stuff at the same time
+git pull origin
+
+
+
+
+#	I'm ready to send my changes up to GitHub:
+#	commit the latest changes first, then push
+
+git push origin
+
+
+
+
+
+
+
