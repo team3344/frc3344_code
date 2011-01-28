@@ -13,6 +13,7 @@ git commit -m 'message'
 
 
 #	get the latest changes from GitHub
+#	do this often, so we don't have merge issues with ppl changing the save stuff at the same time
 git pull origin
 
 
