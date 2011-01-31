@@ -9,7 +9,7 @@
 
 class ThreeStateSolenoid {
 
-public
+public:
 	typedef enum {
 		kLeftState,
 		kRightState,
@@ -30,7 +30,7 @@ public
 	
 	
 	
-private
+private:
 	Solenoid *_leftSolenoid;
 	Solenoid *_rightSolenoid;
 	

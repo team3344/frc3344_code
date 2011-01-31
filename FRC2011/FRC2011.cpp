@@ -1,3 +1,4 @@
+
 #include "WPILib.h"
 #include "Defines.h"
 
@@ -9,7 +10,7 @@ class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;
 	
-	DriverStation _driverStation;
+	DriverStation *_driverStation;
 	
 	Joystick *_rightJoystick;
 	Joystick *_leftJoystick;
@@ -26,7 +27,8 @@ class FRC2011 : public IterativeRobot
 		
 public:
 
-	FRC2011()	{
+	FRC2011()
+	{
 		printf("FRC2011 Constructor Started\n");
 		
 		// Set drive mode
@@ -60,32 +62,31 @@ public:
 		printf("RobotInit() completed.\n");
 	}
 	
+	/*
 	void DisabledInit(void) {
 		m_disabledPeriodicLoops = 0;			// Reset the loop counter for disabled mode
 		ClearSolenoidLEDsKITT();
 		// Move the cursor down a few, since we'll move it back up in periodic.
 		printf("\x1b[2B");
-	}
-
+	}*/
+	/*
 	void AutonomousInit(void) {
 		m_autoPeriodicLoops = 0;				// Reset the loop counter for autonomous mode
 		ClearSolenoidLEDsKITT();
-	}
-
+	}*/
+	/*
 	void TeleopInit(void) {
 		m_driveMode = UNINITIALIZED_DRIVE;		// Set drive mode to uninitialized
 		ClearSolenoidLEDsKITT();
-	}
+	}*/
 
 	/********************************** Periodic Routines *************************************/
 	
-	void DisabledPeriodic(void)  {
+	void DisabledPeriodic(void)
+	{
 		static INT32 printSec = (INT32)GetClock() + 1;
 		static const INT32 startSec = (INT32)GetClock();
 
-
-		// increment the number of disabled periodic loops completed
-		m_disabledPeriodicLoops++;
 		
 		// while disabled, printout the duration of current disabled mode in seconds
 		if (GetClock() > printSec) {
@@ -98,44 +99,27 @@ public:
 
 	void AutonomousPeriodic(void) {
 
-		// generate KITT-style LED display on the solenoids
-		SolenoidLEDsKITT( m_autoPeriodicLoops );
-				
-		/* the below code (if uncommented) would drive the robot forward at half speed
-		 * for two seconds.  This code is provided as an example of how to drive the 
-		 * robot in autonomous mode, but is not enabled in the default code in order
-		 * to prevent an unsuspecting team from having their robot drive autonomously!
-		 */
-		/* below code commented out for safety
-		if (m_autoPeriodicLoops == 1) {
-			// When on the first periodic loop in autonomous mode, start driving forwards at half speed
-			m_robotDrive->Drive(0.5, 0.0);			// drive forwards at half speed
-		}
-		if (m_autoPeriodicLoops == (2 * GetLoopsPerSec())) {
-			// After 2 seconds, stop the robot 
-			m_robotDrive->Drive(0.0, 0.0);			// stop robot
-		}
-		*/
+		
 	}
 
 	
 	void TeleopPeriodic(void) {
 		// determine if tank or arcade mode, based upon position of "Z" wheel on kit joystick
-		if (m_rightStick->GetZ() <= 0) {    // Logitech Attack3 has z-polarity reversed; up is negative
+		if (_rightJoystick->GetZ() <= 0) {    // Logitech Attack3 has z-polarity reversed; up is negative
 			// use arcade drive
-			m_robotDrive->ArcadeDrive(m_rightStick);			// drive with arcade style (use right stick)
-			if (m_driveMode != ARCADE_DRIVE) {
+			_robotDrive->ArcadeDrive(_rightJoystick);			// drive with arcade style (use right stick)
+			if (_driveMode != ARCADE_DRIVE) {
 				// if newly entered arcade drive, print out a message
 				printf("Arcade Drive\n");
-				m_driveMode = ARCADE_DRIVE;
+				_driveMode = ARCADE_DRIVE;
 			}
 		} else {
 			// use tank drive
-			m_robotDrive->TankDrive(m_leftStick, m_rightStick);	// drive with tank style
-			if (m_driveMode != TANK_DRIVE) {
+			_robotDrive->TankDrive(_leftJoystick, _rightJoystick);	// drive with tank style
+			if (_driveMode != TANK_DRIVE) {
 				// if newly entered tank drive, print out a message
 				printf("Tank Drive\n");
-				m_driveMode = TANK_DRIVE;
+				_driveMode = TANK_DRIVE;
 			}
 		}
 	} // TeleopPeriodic(void)
@@ -216,4 +200,4 @@ public:
 			
 };
 
-START_ROBOT_CLASS(BuiltinDefaultCode);
+START_ROBOT_CLASS(FRC2011);

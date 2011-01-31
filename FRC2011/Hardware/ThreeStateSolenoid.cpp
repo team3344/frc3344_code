@@ -52,7 +52,7 @@ void ThreeStateSolenoid::setState(State s)
 }
 
 
-State ThreeStateSolenoid::getState()
+ThreeStateSolenoid::State ThreeStateSolenoid::getState()
 {
 	if ( _leftSolenoid->Get() )
 		return kLeftState;
