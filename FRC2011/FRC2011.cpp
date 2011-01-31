@@ -1,4 +1,7 @@
 #include "WPILib.h"
+#include "Defines.h"
+
+
 
 
 
@@ -10,6 +13,9 @@ class FRC2011 : public IterativeRobot
 	
 	Joystick *_rightJoystick;
 	Joystick *_leftJoystick;
+	
+	
+	Compressor *_compressor;
 	
 
 	enum {							// drive mode selection
@@ -34,14 +40,13 @@ public:
 		_leftJoystick = new Joystick(2);
 		
 		// Set drive mode to uninitialized
-		_driveMode = UNINITIALIZED_DRIVE;
-
-		// Initialize counters to record the number of loops completed in autonomous and teleop modes
-		m_autoPeriodicLoops = 0;
-		m_disabledPeriodicLoops = 0;
-		m_telePeriodicLoops = 0;
-
-		printf("BuiltinDefaultCode Constructor Completed\n");
+		_driveMode = UNINITIALIZED_DRIVE;	//	FIXME: 
+		
+		
+		
+		//	init and start compressor
+		_compressor = new Compressor(SIDECAR_SLOT, 1, SIDECAR_SLOT, 1);
+		_compressor->Start();
 	}
 	
 	
@@ -67,8 +72,6 @@ public:
 	}
 
 	void TeleopInit(void) {
-		m_telePeriodicLoops = 0;				// Reset the loop counter for teleop mode
-		m_dsPacketsReceivedInCurrentSecond = 0;	// Reset the number of dsPackets in current second
 		m_driveMode = UNINITIALIZED_DRIVE;		// Set drive mode to uninitialized
 		ClearSolenoidLEDsKITT();
 	}
@@ -93,8 +96,6 @@ public:
 	}
 
 	void AutonomousPeriodic(void) {
-		
-		m_autoPeriodicLoops++;
 
 		// generate KITT-style LED display on the solenoids
 		SolenoidLEDsKITT( m_autoPeriodicLoops );
@@ -118,49 +119,24 @@ public:
 
 	
 	void TeleopPeriodic(void) {
-		// increment the number of teleop periodic loops completed
-		m_telePeriodicLoops++;
-
-		/*
-		 * No longer needed since periodic loops are now synchronized with incoming packets.
-		if (m_ds->GetPacketNumber() != m_priorPacketNumber) {
-		*/
-			/* 
-			 * Code placed in here will be called only when a new packet of information
-			 * has been received by the Driver Station.  Any code which needs new information
-			 * from the DS should go in here
-			 */
-			 
-			m_dsPacketsReceivedInCurrentSecond++;					// increment DS packets received
-						
-			// put Driver Station-dependent code here
-
-			// Demonstrate the use of the Joystick buttons
-			DemonstrateJoystickButtons(m_rightStick, m_rightStickButtonState, "Right Stick", &m_solenoids[1]);
-			DemonstrateJoystickButtons(m_leftStick, m_leftStickButtonState, "Left Stick ", &m_solenoids[5]);
-		
-			// determine if tank or arcade mode, based upon position of "Z" wheel on kit joystick
-			if (m_rightStick->GetZ() <= 0) {    // Logitech Attack3 has z-polarity reversed; up is negative
-				// use arcade drive
-				m_robotDrive->ArcadeDrive(m_rightStick);			// drive with arcade style (use right stick)
-				if (m_driveMode != ARCADE_DRIVE) {
-					// if newly entered arcade drive, print out a message
-					printf("Arcade Drive\n");
-					m_driveMode = ARCADE_DRIVE;
-				}
-			} else {
-				// use tank drive
-				m_robotDrive->TankDrive(m_leftStick, m_rightStick);	// drive with tank style
-				if (m_driveMode != TANK_DRIVE) {
-					// if newly entered tank drive, print out a message
-					printf("Tank Drive\n");
-					m_driveMode = TANK_DRIVE;
-				}
-			} 
-		/*
-		}  // if (m_ds->GetPacketNumber()...
-		*/
-
+		// determine if tank or arcade mode, based upon position of "Z" wheel on kit joystick
+		if (m_rightStick->GetZ() <= 0) {    // Logitech Attack3 has z-polarity reversed; up is negative
+			// use arcade drive
+			m_robotDrive->ArcadeDrive(m_rightStick);			// drive with arcade style (use right stick)
+			if (m_driveMode != ARCADE_DRIVE) {
+				// if newly entered arcade drive, print out a message
+				printf("Arcade Drive\n");
+				m_driveMode = ARCADE_DRIVE;
+			}
+		} else {
+			// use tank drive
+			m_robotDrive->TankDrive(m_leftStick, m_rightStick);	// drive with tank style
+			if (m_driveMode != TANK_DRIVE) {
+				// if newly entered tank drive, print out a message
+				printf("Tank Drive\n");
+				m_driveMode = TANK_DRIVE;
+			}
+		}
 	} // TeleopPeriodic(void)
 
 
@@ -205,7 +181,7 @@ public:
 	 * The goal here is to generate a KITT-style LED display.  (See http://en.wikipedia.org/wiki/KITT )
 	 * However, since the solenoid module has two scan bars, we can have ours go in opposite directions!
 	 * The scan bar is written to have a period of one second with six different positions.
-	 */
+	 *//*
 	void SolenoidLEDsKITT(UINT32 numloops) {
 		unsigned int const NUM_KITT_POSITIONS = 6;
 		UINT16 numloop_within_second = numloops % (UINT32)GetLoopsPerSec();
@@ -235,91 +211,7 @@ public:
 			m_solenoids[2]->Set(true);  m_solenoids[7]->Set(true);
 			m_solenoids[3]->Set(false); m_solenoids[6]->Set(false);
 		} 
-	}
-
-	/**
-	 * Demonstrate handling of joystick buttons
-	 * 
-	 * This method expects to be called during each periodic loop, providing the following
-	 * capabilities:
-	 * - Print out a message when a button is initially pressed
-	 * - Solenoid LEDs light up according to joystick buttons:
-	 *   - When no buttons pressed, clear the solenoid LEDs
-	 *   - When only one button is pressed, show the button number (in binary) via the solenoid LEDs
-	 *   - When more than one button is pressed, show "15" (in binary) via the solenoid LEDs
-	 */
-	void DemonstrateJoystickButtons(Joystick *currStick,
-									bool *buttonPreviouslyPressed,
-									const char *stickString,
-									Solenoid *solenoids[]) {
-		
-		UINT8 buttonNum = 1;				// start counting buttons at button 1
-		bool outputGenerated = false;		// flag for whether or not output is generated for a button
-		INT8 numOfButtonPressed = 0;		// 0 if no buttons pressed, -1 if multiple buttons pressed
-		
-		/* Iterate over all the buttons on the joystick, checking to see if each is pressed
-		 * If a button is pressed, check to see if it is newly pressed; if so, print out a
-		 * message on the console
-		 */ 
-		for (buttonNum = 1; buttonNum <= NUM_JOYSTICK_BUTTONS; buttonNum++) {
-			if (currStick->GetRawButton(buttonNum)) {
-				// the current button is pressed, now act accordingly...
-				if (!buttonPreviouslyPressed[buttonNum]) {
-					// button newly pressed; print out a message
-					if (!outputGenerated) {
-						// print out a heading if no other button pressed this cycle
-						outputGenerated = true;
-						printf("%s button pressed:", stickString);
-					}
-					printf(" %d", buttonNum);
-				}
-				// remember that this button is pressed for the next iteration
-				buttonPreviouslyPressed[buttonNum] = true;
-				
-				// set numOfButtonPressed appropriately
-				if (numOfButtonPressed == 0) {
-					// no button pressed yet this time through, set the number correctly
-					numOfButtonPressed = buttonNum;
-				} else {
-					// another button (or buttons) must have already been pressed, set appropriately
-					numOfButtonPressed = -1;
-				}
-			} else {
-				buttonPreviouslyPressed[buttonNum] = false;
-			}
-		}
-		
-		// after iterating through all the buttons, add a newline to output if needed
-		if (outputGenerated) {
-			printf("\n");
-		}
-		
-		if (numOfButtonPressed == -1) {
-			// multiple buttons were pressed, display as if button 15 was pressed
-			DisplayBinaryNumberOnSolenoidLEDs(15, solenoids);
-		} else {
-			// display the number of the button pressed on the solenoids;
-			// note that if no button was pressed (0), the solenoid display will be cleared (set to 0)
-			DisplayBinaryNumberOnSolenoidLEDs(numOfButtonPressed, solenoids);
-		}
-	}
-	
-
-	/**
-	 * Display a given four-bit value in binary on the given solenoid LEDs
-	 */
-	void DisplayBinaryNumberOnSolenoidLEDs(UINT8 displayNumber, Solenoid *solenoids[]) {
-
-		if (displayNumber > 15) {
-			// if the number to display is larger than can be displayed in 4 LEDs, display 0 instead
-			displayNumber = 0;
-		}
-		
-		solenoids[3]->Set( (displayNumber & 1) != 0);
-		solenoids[2]->Set( (displayNumber & 2) != 0);
-		solenoids[1]->Set( (displayNumber & 4) != 0);
-		solenoids[0]->Set( (displayNumber & 8) != 0);
-	}
+	}*/
 			
 };
 

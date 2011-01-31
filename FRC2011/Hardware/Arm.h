@@ -44,6 +44,10 @@ class Arm {
 	void lowerElbow();
 	
 	
+	void calibrate();
+	
+	
+	
 private:
 	//	solenoid that controls shoulder cylinder
 	ThreeStateSolenoid *_shoulderSolenoid;
