@@ -18,7 +18,7 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 	
 
-	enum {							// drive mode selection
+	enum {						// drive mode selection
 		ARCADE_DRIVE = 1,
 		TANK_DRIVE = 2
 	} _driveMode;
@@ -28,9 +28,13 @@ public:
 
 	FRC2011()	{
 		printf("FRC2011 Constructor Started\n");
+		
+		// Set drive mode
+		_driveMode = ARCADE_DRIVE;
+		
 
 		// Create a robot using standard right/left robot drive on PWMS 1, 2, 3, and #4
-		_robotDrive = new RobotDrive(1, 3, 2, 4);
+		_robotDrive = new RobotDrive(1, 3, 2, 4);	//	FIXME: asdf;asdkjf;asdjfl;asdj;
 
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
@@ -38,9 +42,6 @@ public:
 		// Define joysticks being used at USB port #1 and USB port #2 on the Drivers Station
 		_rightJoystick = new Joystick(1);
 		_leftJoystick = new Joystick(2);
-		
-		// Set drive mode to uninitialized
-		_driveMode = UNINITIALIZED_DRIVE;	//	FIXME: 
 		
 		
 		
@@ -163,14 +164,14 @@ public:
 	 * Clear KITT-style LED display on the solenoids
 	 * 
 	 * Clear the solenoid LEDs used for a KITT-style LED display.
-	 */	
+	 */	/*
 	void ClearSolenoidLEDsKITT() {
 		// Iterate over all the solenoids on the robot, clearing each in turn
 		UINT8 solenoidNum = 1;						// start counting solenoids at solenoid 1
 		for (solenoidNum = 1; solenoidNum <= NUM_SOLENOIDS; solenoidNum++) {
 			m_solenoids[solenoidNum]->Set(false);
 		}
-	}
+	}*/
 	
 	/**
 	 * Generate KITT-style LED display on the solenoids
