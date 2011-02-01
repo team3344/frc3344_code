@@ -22,7 +22,7 @@ const UINT32 SIDECAR_SLOT = 4;
 
 
 
-#endif DEFINES_H
+#endif //	DEFINES_H
 
 
 

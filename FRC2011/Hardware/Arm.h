@@ -28,6 +28,9 @@ counter-clockwise is positive
 
 class Arm {
 	
+	//	FIXME: create constructor
+	
+	
 	//	arm position
 	float shoulderAngle();	//	0 is horizontal.  vertical is pi / 2
 	float elbowAngle();		//	0 is fully extended.  
@@ -53,8 +56,7 @@ private:
 	ThreeStateSolenoid *_shoulderSolenoid;
 	
 	//	elbow
-	Jaguar *_shoulderDensoLeft;
-	Jaguar *_shoulderDensoRight;
+	Jaguar *_elbowJaguar;
 	
 };
 

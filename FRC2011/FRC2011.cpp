@@ -1,5 +1,6 @@
 
 #include "WPILib.h"
+#include "Hardware/Arm.h"
 #include "Defines.h"
 
 
@@ -9,8 +10,12 @@
 class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;
+	Arm *_arm;
 	
 	DriverStation *_driverStation;
+	
+	
+	SmartDashboard *_dashboard;
 	
 	Joystick *_rightJoystick;
 	Joystick *_leftJoystick;
@@ -51,6 +56,48 @@ public:
 		_compressor = new Compressor(SIDECAR_SLOT, 1, SIDECAR_SLOT, 1);
 		_compressor->Start();
 	}
+	
+	
+	
+	
+	void LogToDashboard()
+	{
+		//	relay ports
+		
+		
+		
+		_dashboard->Log("hello world", "try1");
+		
+		
+		
+		
+		//	power sent to motors
+		
+		
+		
+		
+		
+		//	light sensors
+		
+		//	arm position
+		
+		//	camera image
+		
+		//	pressure of storage tanks
+		
+		//	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 	
 	
 	/********************************** Init Routines *************************************/
@@ -98,10 +145,10 @@ public:
 	}
 
 	void AutonomousPeriodic(void) {
-
 		
+		LogToDashboard();
 	}
-
+	
 	
 	void TeleopPeriodic(void) {
 		// determine if tank or arcade mode, based upon position of "Z" wheel on kit joystick
@@ -122,6 +169,12 @@ public:
 				_driveMode = TANK_DRIVE;
 			}
 		}
+		
+		
+		
+		LogToDashboard();
+		
+		
 	} // TeleopPeriodic(void)
 
 
