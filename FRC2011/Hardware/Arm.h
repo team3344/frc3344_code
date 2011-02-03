@@ -27,9 +27,9 @@ counter-clockwise is positive
 
 
 //	all in inches
-const double FOREARM_LENGTH 33;	//	FIXME: these aren't right???
-const double BACKARM_LENGTH 33;
-const double SUPPORT_HEIGHT 51;
+const double FOREARM_LENGTH = 33;	//	FIXME: these aren't right???
+const double BACKARM_LENGTH = 33;
+const double SUPPORT_HEIGHT = 51;
 
 
 class Arm {
@@ -67,7 +67,6 @@ private:
 	
 	//	elbow
 	Jaguar *_elbowJaguar;
-	
 	PIDController *_elbowPositionController;
 	
 	
