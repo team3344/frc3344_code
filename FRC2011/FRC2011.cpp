@@ -116,11 +116,11 @@ public:
 		// Move the cursor down a few, since we'll move it back up in periodic.
 		printf("\x1b[2B");
 	}*/
-	/*
-	void AutonomousInit(void) {
-		m_autoPeriodicLoops = 0;				// Reset the loop counter for autonomous mode
-		ClearSolenoidLEDsKITT();
-	}*/
+	
+	void AutonomousInit(void)
+	{
+		
+	}
 	/*
 	void TeleopInit(void) {
 		m_driveMode = UNINITIALIZED_DRIVE;		// Set drive mode to uninitialized
