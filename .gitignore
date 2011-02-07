@@ -1,0 +1,13 @@
+
+#	compiler-generated stuff
+*/PPC603gnu/*
+*.[oa]
+
+#	windriver metadata
+.metadata/*
+
+
+#	mac stuff
+*._*
+*.Ds_Store
+*.DS_Store

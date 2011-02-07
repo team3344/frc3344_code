@@ -23,6 +23,11 @@ class LineController {
 	
 	
 	
+	
+	
+	
+	
+	
 private:
 	LightSensorArray *_lsArray;
 	
