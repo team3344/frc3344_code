@@ -65,6 +65,7 @@ private:
 	//	solenoid that controls shoulder cylinder
 	ThreeStateSolenoid *_shoulderSolenoid;
 	
+	
 	//	elbow
 	Jaguar *_elbowJaguar;
 	PIDController *_elbowPositionController;
