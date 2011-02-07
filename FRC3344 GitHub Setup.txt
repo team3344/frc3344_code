@@ -14,7 +14,7 @@ ssh-keygen -t rya -C "myemail@example.com"	# hit yes/enter until it finishes gen
 # copy the key to the clipboard:
 cat ~/.ssh/id_rsa.pub | pbcopy
 
-# add the ssh key on GitHub (it's under "My Account")
+# add the ssh key on GitHub (it's under "Account Settings -> SSH Public Keys")
 # name it whatever you want & paste the key contents in there (it's already in the clipboard)
 
 
