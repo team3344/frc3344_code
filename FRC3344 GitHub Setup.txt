@@ -1,0 +1,32 @@
+
+# install git: http://git-scm.com/download
+# create an account on GitHub.com - it's free
+# ask to be added as a collaborator - send an email to justbuchanan@gmail.com
+
+# most of this setup is done through the command line
+# windows: "Git Bash"
+# mac: "Terminal.app"
+
+# create an ssh key:
+ssh-keygen -t rya -C "myemail@example.com"	# hit yes/enter until it finishes generating the key
+
+
+# copy the key to the clipboard:
+cat ~/.ssh/id_rsa.pub | pbcopy
+
+# add the ssh key on GitHub (it's under "My Account")
+# name it whatever you want & paste the key contents in there (it's already in the clipboard)
+
+
+# cd to the directory where you want your copy of the repository to go
+# if you don't know what "cd" is, just type "cd ~/desktop" to put it on your desktop
+
+
+# clone the repository:
+git clone git@github.com:team3344/frc3344_code.git
+
+
+# You're done!
+# if you had problems, send them to justbuchanan@gmail.com for help - screenshots of the problem help!
+
+
