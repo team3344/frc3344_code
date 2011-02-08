@@ -18,7 +18,7 @@ class LineController {
 	
 	
 	//	line-following speed
-	void setSpeed();
+	void setSpeed(float speed);
 	float speed()
 	
 	
@@ -48,6 +48,9 @@ class LineController {
 	
 private:
 	LightSensorArray *_lsArray;
+	
+	float _followingSpeed;
+	
 	
 };
 
