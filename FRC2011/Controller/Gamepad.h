@@ -23,6 +23,14 @@ public:
         kCenter, kUp, kUpLeft, kLeft, kDownLeft, kDown, kDownRight, kRight,
         kUpRight
     } DPadDirection;
+    
+    typedef enum
+    {
+    	kLeftButton, kBottomButton, kRightButton, kTopButton,
+    	kLeftTopTrigger, kRightTopTrigger, kLeftBottomTrigger, kRightBottomTrigger,
+    	kLeftCenterButton, kRightCenterButton,
+    	kLeftAnalogStickButton, kRightAnalogStickButton
+    } ButtonType;
 
     Gamepad(UINT32 port);
     ~Gamepad();
@@ -35,6 +43,7 @@ public:
     float GetRawAxis(UINT32 axis);
 
     bool GetNumberedButton(unsigned buttonNumber);
+    bool GetButton(ButtonType button);
     bool GetLeftPush();
     bool GetRightPush();
 
@@ -47,9 +56,6 @@ protected:
     static const UINT32 kRightYAxisNum = 4;
     static const UINT32 kDPadXAxisNum = 5;
     static const UINT32 kDPadYAxisNum = 6;
-
-    static const unsigned kLeftAnalogStickButton = 11;
-    static const unsigned kRightAnalogStickButton = 12;
 
     DriverStation *ap_ds;
     UINT32 a_port;

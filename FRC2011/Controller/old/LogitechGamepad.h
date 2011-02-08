@@ -3,6 +3,7 @@
 #ifndef LOGITECH_GAMEPAD_H
 #define LOGITECH_GAMEPAD_H
 
+
 #include "wpilib.h"
 
 
@@ -10,7 +11,8 @@
 
 
 
-class LogitechGamepad	{	//	FIXME: inherit from GenericHID???, Joystick???
+class LogitechGamepad : public GenericHID {	//	FIXME: inherit from GenericHID???, Joystick???
+
 public:
 	LogitechGamepad(UINT32 portNumber);	//	FIXME: does wpi call it port number???
 	~LogitechGamepad();

@@ -102,13 +102,26 @@ bool Gamepad::GetNumberedButton(UINT32 button)
 }
 
 /**
+ * Get the button value for the buttons defined by the ButtonType enum
+ *
+ * Calls GetNumberedButton to get the actual value
+ *
+ * @param button The button to be read.
+ * @return The state of the button.
+ **/
+bool Gamepad::GetButton(ButtonType button)
+{
+    return GetNumberedButton(button);
+}
+
+/**
  * Gets whether or not the left analog stick is depressed.
  *
  * @return The state of the left analog stick button.
  */
 bool Gamepad::GetLeftPush()
 {
-    return GetNumberedButton(kLeftAnalogStickButton);
+    return GetButton(kLeftAnalogStickButton);
 }
 
 /**
@@ -118,7 +131,7 @@ bool Gamepad::GetLeftPush()
  */
 bool Gamepad::GetRightPush()
 {
-    return GetNumberedButton(kRightAnalogStickButton);
+    return GetButton(kRightAnalogStickButton);
 }
 
 Gamepad::DPadDirection Gamepad::GetDPad()
@@ -145,4 +158,5 @@ Gamepad::DPadDirection Gamepad::GetDPad()
 
   return kCenter;
 }
+
 
