@@ -11,7 +11,12 @@ float Arm::shoulderAngle()
 float Arm::elbowAngle()
 {
 	return 1.0;	//	FIXME: sd;fajsd;fjas;fj;sdafkj
-}	
+}
+
+float Arm::absoluteElbowAngle()
+{
+	return shoulderAngle() + elbowAngle();
+}
 
 //	shoulder adjustment
 void Arm::holdShoulder()

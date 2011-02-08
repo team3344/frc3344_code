@@ -23,9 +23,3 @@ LightSensorState LightSensorArray::state()
 }
 
 
-
-
-
-
-
-

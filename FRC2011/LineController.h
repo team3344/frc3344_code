@@ -5,19 +5,37 @@
 
 #include "wpilib.h"
 #include "LightSensorArray.h"
-
+#include "Defines.h"
 
 
 class LineController {
 	
 	//	FIXME: CREATE A CONSTRUCTOR!!! - params: lsArray? robot drive???
+	
+	
+	LineController(LightSensorArray *lsArray);
 	~LineController();
 	
 	
+	//	line-following speed
+	void setSpeed();
+	float speed()
+	
+	
+	
+	bool followingLine();
+	
+	
+	
+	bool lineIsThick();	//	returns true if all 3 light sensors are "on"
+	
+	
 	//	follow line for distance???
-	//	follow line until fork???
-	//	follow line until T???
-	//	follow line until end???
+	
+	//	follow until thick
+		//	follow line until fork???
+		//	follow line until T???
+	
 	//	follow line for time???
 	
 	

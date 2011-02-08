@@ -33,17 +33,18 @@ const double SUPPORT_HEIGHT = 51;
 
 
 class Arm {
-	
+
+public:
 	//	FIXME: create constructor
 	
 	
 	
 	
 	
-	
 	//	arm position
-	float shoulderAngle();	//	0 is horizontal.  vertical is pi / 2
-	float elbowAngle();		//	0 is fully extended.  
+	float shoulderAngle();		//	0 is horizontal.  vertical is pi / 2
+	float elbowAngle();			//	0 is fully extended.  relative to "backarm"
+	float absoluteElbowAngle();	//	relative to ground.  0 is horizontal
 	
 	
 	//	shoulder adjustment
