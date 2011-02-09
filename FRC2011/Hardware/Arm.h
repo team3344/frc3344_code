@@ -68,7 +68,8 @@ private:
 	
 	
 	//	elbow
-	Jaguar *_elbowJaguar;
+	Victor *_elbowController;
+	Potentiometer *_elbowPositionSensor;
 	PIDController *_elbowPositionController;
 	
 	
