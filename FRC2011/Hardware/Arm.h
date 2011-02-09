@@ -1,6 +1,6 @@
 
 #include "wpilib.h"
-#include "DoubleSolenoid.h"
+#include "Solenoid/DoubleSolenoid.h"
 
 
 #ifndef ARM_H
@@ -33,7 +33,7 @@ const double SUPPORT_HEIGHT = 51;
 
 
 //	joint angle limits
-const double ELBOW_MIN_ANGLE = -PI / 2;		//	FIXME: these are wrong
+const double ELBOW_MIN_ANGLE = -M_PI / 2;		//	FIXME: these are wrong
 const double ELBOW_MAX_ANGLE = PI / 2;		//
 
 const double SHOULDER_MIN_ANGLE = -PI / 4;	//
