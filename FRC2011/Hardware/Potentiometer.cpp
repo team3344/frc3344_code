@@ -2,55 +2,75 @@
 #include "Potentiometer.h"
 
 
-
 const float POTENTIOMETER_VOLTAGE_READING_RANGE = 10;
 
 
 
 
-
-Potentiometer(UINT32 slot, UINT32 channel)
+Potentiometer::Potentiometer(UINT32 slot, UINT32 channel, Type type = kLinearType)
 {
 	_analogChannel = new AnalogChannel(slot, channel);
 }
 
-~Potentiometer()
+Potentiometer::~Potentiometer()
 {
 	delete _analogInput;
 }
 
 
-float currentVoltage()
+float Potentiometer::currentVoltage()
 {
 	return _analogChannel->GetVoltage();
 }
 
-float currentPosition()
+float Potentiometer::currentPosition()
 {
-	float pos = (abs(currentVoltage()) / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
-	return pos;
+	//	FIXME: different if logarithmic!!!!!!!!!!!!
+	
+	
+	
+	
+	
+	
+	float offset = (abs(currentVoltage()) / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
+	return pos + _initialPosition;
 }
 
 
-float positionRange()
+float Potentiometer::positionRange()
 {
 	return _positionRange;
 }
 
-void setPositionRange(float range)
+void Potentiometer::setPositionRange(float range)
 {
 	_positionRange = range;
 }
 
 
-float voltageRange()
+float Potentiometer::voltageRange()
 {
 	return _voltageRange;
 }
 
-void setVoltageRange(float range)
+void Potentiometer::setVoltageRange(float range)
 {
 	_voltageRange = range;
 }
+
+
+
+
+
+//	PID Source
+
+double PIDGet()
+{
+	return currentPosition();
+}
+
+
+
+
 
 
