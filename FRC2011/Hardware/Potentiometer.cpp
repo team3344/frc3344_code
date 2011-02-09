@@ -25,15 +25,8 @@ float Potentiometer::currentVoltage()
 
 float Potentiometer::currentPosition()
 {
-	//	FIXME: different if logarithmic!!!!!!!!!!!!
-	
-	
-	
-	
-	
-	
 	float offset = (abs(currentVoltage()) / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
-	return pos + _initialPosition;
+	return offset + _initialPosition;
 }
 
 
