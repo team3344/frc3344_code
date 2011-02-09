@@ -2,6 +2,13 @@
 #include "Potentiometer.h"
 
 
+
+const float POTENTIOMETER_VOLTAGE_READING_RANGE = 10;
+
+
+
+
+
 Potentiometer(UINT32 slot, UINT32 channel)
 {
 	_analogChannel = new AnalogChannel(slot, channel);
@@ -20,7 +27,7 @@ float currentVoltage()
 
 float currentPosition()
 {
-	float pos = (currentVoltage() / _voltageRange) * _positionRange;
+	float pos = (abs(currentVoltage()) / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
 	return pos;
 }
 
