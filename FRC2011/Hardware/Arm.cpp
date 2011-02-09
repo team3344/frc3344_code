@@ -50,21 +50,20 @@ void Arm::lowerElbow()
 
 
 
+/*	Arm protection - keeps joints from over-extending	*/
 
-
-
-
-
-
-
-
-
-
-void Arm::calibrate()
+void Arm::protectArm()
 {
-	
+	while ( true )
+	{
+		//	if elbow at end of range & trying to go further, stop!!!
+	}
 }
 
 
+void Arm::InitArmProtector()
+{
+	_armProtector = new Task("Arm Protector", &Arm::protectArm);	//	FIXME: is this legit syntax
+}
 
 

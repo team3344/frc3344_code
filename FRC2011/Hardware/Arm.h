@@ -1,6 +1,6 @@
 
 #include "wpilib.h"
-#include "ThreeStateSolenoid.h"
+#include "DoubleSolenoid.h"
 
 
 #ifndef ARM_H
@@ -32,6 +32,15 @@ const double BACKARM_LENGTH = 33;
 const double SUPPORT_HEIGHT = 51;
 
 
+//	joint angle limits
+const double ELBOW_MIN_ANGLE = -PI / 2;		//	FIXME: these are wrong
+const double ELBOW_MAX_ANGLE = PI / 2;		//
+
+const double SHOULDER_MIN_ANGLE = -PI / 4;	//
+const double SHOULDER_MAX_ANGLE = 3/4 * PI;	//
+
+
+
 class Arm {
 
 public:
@@ -58,13 +67,13 @@ public:
 	void lowerElbow();
 	
 	
-	void calibrate();
-	
-	
+	//	FIXME: elbow target???
+
+
 	
 private:
 	//	solenoid that controls shoulder cylinder
-	ThreeStateSolenoid *_shoulderSolenoid;
+	DoubleSolenoid *_shoulderSolenoid;
 	
 	
 	//	elbow
@@ -83,6 +92,12 @@ private:
 	
 	//	angles where we want the elbow and shoulder to be
 	double _elbowTarget, _shoulderTarget;
+
+
+	//	FIXME: is this necessary??? what if we just limit the joint targets???
+	Task *_armProtector;	//	watches joints and shuts them off if they try to over-extend
+	void InitArmProtector();
+	void protectArm();
 };
 
 
