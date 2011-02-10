@@ -1,6 +1,7 @@
 
-#include "WPILib.h"
+#include "wpilib.h"
 #include "Hardware/Arm.h"
+#include "Hardware/Claw.h"
 #include "Defines.h"
 
 
@@ -9,8 +10,9 @@
 
 class FRC2011 : public IterativeRobot
 {
-	RobotDrive *_robotDrive;
+	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive
 	Arm *_arm;
+	Claw *_claw;
 	
 	DriverStation *_driverStation;
 	
@@ -22,12 +24,6 @@ class FRC2011 : public IterativeRobot
 	
 	
 	Compressor *_compressor;
-	
-
-	enum {						// drive mode selection
-		ARCADE_DRIVE = 1,
-		TANK_DRIVE = 2
-	} _driveMode;
 	
 		
 public:
@@ -41,7 +37,8 @@ public:
 		
 
 		// Create a robot using standard right/left robot drive on PWMS 1, 2, 3, and #4
-		_robotDrive = new RobotDrive(1, 3, 2, 4);	//	FIXME: asdf;asdkjf;asdjfl;asdj;
+		_robotDrive = new RobotDrive(1, 3, 2, 4);
+		//	FIXME: motors reversed???
 
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
@@ -150,26 +147,9 @@ public:
 	}
 	
 	
-	void TeleopPeriodic(void) {
-		// determine if tank or arcade mode, based upon position of "Z" wheel on kit joystick
-		if (_rightJoystick->GetZ() <= 0) {    // Logitech Attack3 has z-polarity reversed; up is negative
-			// use arcade drive
-			_robotDrive->ArcadeDrive(_rightJoystick);			// drive with arcade style (use right stick)
-			if (_driveMode != ARCADE_DRIVE) {
-				// if newly entered arcade drive, print out a message
-				printf("Arcade Drive\n");
-				_driveMode = ARCADE_DRIVE;
-			}
-		} else {
-			// use tank drive
-			_robotDrive->TankDrive(_leftJoystick, _rightJoystick);	// drive with tank style
-			if (_driveMode != TANK_DRIVE) {
-				// if newly entered tank drive, print out a message
-				printf("Tank Drive\n");
-				_driveMode = TANK_DRIVE;
-			}
-		}
-		
+	void TeleopPeriodic(void)
+	{
+		_robotDrive->ArcadeDrive(_rightJoystick);			// drive with arcade style (use right stick)
 		
 		
 		LogToDashboard();
