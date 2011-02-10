@@ -1,38 +1,38 @@
 
 #include "LineController.h"
 
-LineController(LightSensorArray *lsArray)
+LineController::LineController(LightSensorArray *lsArray)
 {
 	
 }
 
-~LineController()
+LineController::~LineController()
 {
 	
 }
 
 
 //	line-following speed
-void setSpeed(float speed)
+void LineController::setSpeed(float speed)
 {
-	_speed = speed;
+	_followingSpeed = speed;
 }
 
-float speed()
+float LineController::speed()
 {
-	return _speed;
+	return _followingSpeed;
 }
 
 
 
-bool followingLine()
+bool LineController::followingLine()
 {
 	return false;	//	FIXME: implement!!! look at running Task?
 }
 
-bool lineIsThick()
+bool LineController::lineIsThick()
 {
-	return _lsArray->state() == kLeftOn | kMidOn | kRightOn;	//	return true if they're all on
+	return _lsArray->state() == (LightSensorArray::LightSensorState)(LightSensorArray::kLeftOn | LightSensorArray::kMidOn | LightSensorArray::kRightOn);	//	return true if they're all on
 }
 
 

@@ -1,7 +1,8 @@
 
 #include "wpilib.h"
 #include "Solenoid/DoubleSolenoid.h"
-
+#include "Potentiometer.h"
+#include "../Defines.h"
 
 #ifndef ARM_H
 #define ARM_H

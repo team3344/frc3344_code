@@ -5,6 +5,11 @@
 
 
 
+//	FIXME: these are trash
+#warning these are garbage
+const double M_PI = 3.14159;
+const double PI = M_PI;
+
 
 const UINT32 SOLENOID_BREAKOUT_SLOT = 8;
 const UINT32 SIDECAR_SLOT = 4;

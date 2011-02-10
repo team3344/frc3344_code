@@ -13,7 +13,7 @@ public:
 	~LightSensorArray();
 	
 	
-	enum {
+	typedef enum {
 		kLeftOn		= 1 << 0,
 		kMidOn		= 1 << 1,
 		kRightOn	= 1 << 2

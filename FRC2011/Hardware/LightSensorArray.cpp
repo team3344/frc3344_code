@@ -16,9 +16,9 @@ LightSensorArray::~LightSensorArray()
 }
 
 
-LightSensorState LightSensorArray::state()
+LightSensorArray::LightSensorState LightSensorArray::state()
 {
-	LightSensorState state = ( _left->Get() ) || ( _mid->Get() << 1 ) || ( _right->Get() << 2 );
+	LightSensorState state = (LightSensorState)( ( _left->Get() ) || ( _mid->Get() << 1 ) || ( _right->Get() << 2 ) );
 	return state;
 }
 

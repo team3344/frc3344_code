@@ -48,7 +48,7 @@ DoubleSolenoid::State DoubleSolenoid::getState()
 {
 	if ( _leftSolenoid->Get() )
 		return kLeftState;
-	else ( _rightSolenoid->Get() )
+	else
 		return kRightState;
 }
 

@@ -7,14 +7,14 @@ const float POTENTIOMETER_VOLTAGE_READING_RANGE = 10;
 
 
 
-Potentiometer::Potentiometer(UINT32 slot, UINT32 channel, Type type = kLinearType)
+Potentiometer::Potentiometer(UINT32 slot, UINT32 channel)
 {
 	_analogChannel = new AnalogChannel(slot, channel);
 }
 
 Potentiometer::~Potentiometer()
 {
-	delete _analogInput;
+	delete _analogChannel;
 }
 
 
@@ -25,7 +25,8 @@ float Potentiometer::currentVoltage()
 
 float Potentiometer::currentPosition()
 {
-	float offset = (abs(currentVoltage()) / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
+#warning do abs(currentVoltage())
+	float offset = (currentVoltage() / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
 	return offset + _initialPosition;
 }
 
@@ -40,7 +41,7 @@ void Potentiometer::setPositionRange(float range)
 	_positionRange = range;
 }
 
-
+/*
 float Potentiometer::voltageRange()
 {
 	return _voltageRange;
@@ -50,20 +51,16 @@ void Potentiometer::setVoltageRange(float range)
 {
 	_voltageRange = range;
 }
-
-
+*/
 
 
 
 //	PID Source
-
+/*
 double PIDGet()
 {
 	return currentPosition();
 }
-
-
-
-
-
+*/
+#warning implement pid source
 

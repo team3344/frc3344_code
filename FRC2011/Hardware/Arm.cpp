@@ -63,7 +63,7 @@ void Arm::protectArm()
 
 void Arm::InitArmProtector()
 {
-	_armProtector = new Task("Arm Protector", &Arm::protectArm);	//	FIXME: is this legit syntax
+	//_armProtector = new Task("Arm Protector", &Arm::protectArm);	//	FIXME: is this legit syntax
 }
 
 

@@ -4,7 +4,7 @@
 
 
 #include "wpilib.h"
-#include "LightSensorArray.h"
+#include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 
 
@@ -19,7 +19,7 @@ class LineController {
 	
 	//	line-following speed
 	void setSpeed(float speed);
-	float speed()
+	float speed();
 	
 	
 	
