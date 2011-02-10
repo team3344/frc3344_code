@@ -6,7 +6,7 @@ SafeDrive::SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgHe
 {
 	_wheelbaseWidth = wheelbaseWidth;
 	_wheelbaseLength = wheelbaseLength;
-	_cgHeightFunction = cgHeightFunction;
+	_cgLocationFunction = cgLocationFunction;
 	
 	//	FIXME: initialize??????
 }

@@ -8,7 +8,7 @@
 
 class SafeDrive : public RobotDrive {
 
-	SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgHeightFunction = NULL);
+	SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgLocationFunction = NULL);
 	~SafeDrive();
 
 	
@@ -46,7 +46,7 @@ private:
 	bool _safeModeActive;
 	Task _protectionTask;
 	double _wheelbaseWidth, _wheelbaseLength;
-	FUNCPTR _cgHeightFunction;
+	FUNCPTR _cgLocationFunction;	//	FIXME: make this return a Vector
 	
 	//	max velocity???????
 };
