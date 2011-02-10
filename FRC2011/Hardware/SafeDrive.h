@@ -46,7 +46,10 @@ private:
 	bool _safeModeActive;
 	Task _protectionTask;
 	double _wheelbaseWidth, _wheelbaseLength;
-	FUNCPTR _cgLocationFunction;	//	FIXME: make this return a Vector
+	FUNCPTR _cgLocationFunction;	//	FIXME: make this return a Vector!!!!!!!!!!!!!!!
+	
+	PIDController *_leftSpeedController;
+	PIDController *_rightSpeedController;
 	
 	//	max velocity???????
 };

@@ -17,6 +17,24 @@ SafeDrive::~SafeDrive()
 }
 
 
+
+
+
+void SafeDrive::initPIDControllers()
+{
+	//	FIXME: following line is complete garbage!!!!!!!!!!!!!!!!!
+	//_leftSpeedController = new PIDController(2, 1, 2, /*src*/, PIDOutput *output);
+}
+
+
+
+
+
+
+
+
+
+
 void SafeDrive::setSafeModeActive(bool active)
 {
 	_safeModeActive = active;
@@ -46,7 +64,7 @@ double SafeDrive::calculateVelocity(double left, double right)
 }
 
 
-//	given the left & right wheel speeds, finds the turn radius
+//	given the left & right wheel speeds, finds the turn radius.  negative values = right turn. positive = left
 double SafeDrive::calculateTurnRadius(double left, double right)
 {
 	//	FIXME: does this work for all cases?????  which doesn't it work for???
