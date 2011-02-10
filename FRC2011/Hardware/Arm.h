@@ -3,6 +3,7 @@
 #include "Solenoid/DoubleSolenoid.h"
 #include "Potentiometer.h"
 #include "../Defines.h"
+#include <math.h>
 
 #ifndef ARM_H
 #define ARM_H
@@ -34,7 +35,7 @@ const double SUPPORT_HEIGHT = 51;
 
 
 //	joint angle limits
-const double ELBOW_MIN_ANGLE = -M_PI / 2;		//	FIXME: these are wrong
+const double ELBOW_MIN_ANGLE = -PI / 2;		//	FIXME: these are wrong
 const double ELBOW_MAX_ANGLE = PI / 2;		//
 
 const double SHOULDER_MIN_ANGLE = -PI / 4;	//

@@ -3,12 +3,11 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+#include "wpilib.h"
+#include <math.h>
 
 
-//	FIXME: these are trash
-#warning these are garbage
-const double M_PI = 3.14159;
-const double PI = M_PI;
+const double PI = 3.14159265358979323846;
 
 
 const UINT32 SOLENOID_BREAKOUT_SLOT = 8;
