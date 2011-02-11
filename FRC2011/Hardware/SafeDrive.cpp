@@ -19,7 +19,6 @@ SafeDrive::~SafeDrive()
 
 
 
-
 void SafeDrive::initPIDControllers()
 {
 	//	FIXME: the following line is complete garbage!!!!!!!!!!!!!!!!!
@@ -28,7 +27,7 @@ void SafeDrive::initPIDControllers()
 
 
 
-
+//	returns an equivalent angle between 0 & 2pi
 double SafeDrive::reduceAngle(double angle)
 {
 	double two_pi = 2 * PI;
@@ -37,7 +36,7 @@ double SafeDrive::reduceAngle(double angle)
 	{
 		angle -= two_pi;
 	}
-	while ( angle < -two_pi )
+	while ( angle < 0 )
 	{
 		angle += two_pi;
 	}
@@ -70,27 +69,37 @@ double SafeDrive::maxAllowedAcceleration(double direction)
 	//	FIXME: implement
 	
 	
+	Vector cg;	//	FIXME:	=	_cgLocationFunction();	//	????
 	
-	double angle = direction + PI;
+	
+	
+	double angle = reduceAngle(direction + PI);
 	//	slope = tan(angle)
 	//	linear equation: Y - cg.y = slope * (X - cg.x)
 	//	Y = X*tan(angle) - cg.x*tan(angle) + cg.y
+	//	X = (Y - cg.y) / slope + cg.x
+	
+	double yIntercept = cg.y - cg.x*tan(angle);
 	
 	
-	double x, y;
 	
-	
-	if ( angle = PI / 2 )
+	if ( angle > (PI / 2) && angle < (3/4 *PI) )	//	quadrants 2 & 3
 	{
-		
+		//	FIXME:
+	}
+	else	//	quadrants 1 & 4
+	{
+		//	FIXME: 
 	}
 	
 	
+	double x, y;	//	FIXME: solve these!!!
 	
 	
-	Vector cgLocation;	//	=	_cgLocationFunction();	//	????
+	double radius = sqrt( pow(x, 2) + pow(y, 2) );
 	
-	
+	//	max acceleration = g * (radius)/(cg height)
+	double maxAcceleration = (32) * (radius / cg.z);
 	
 	
 	
