@@ -51,6 +51,13 @@ private:
 	PIDController *_leftSpeedController;
 	PIDController *_rightSpeedController;
 	
+	
+	
+	double _leftTarget, _rightTarget;
+	
+	//	double _leftAcceleration, _rightAcceleration;	//	FIXME: are these necessary???
+	
+	
 	//	max velocity???????
 };
 

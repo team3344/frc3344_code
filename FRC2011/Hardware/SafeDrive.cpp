@@ -22,14 +22,28 @@ SafeDrive::~SafeDrive()
 
 void SafeDrive::initPIDControllers()
 {
-	//	FIXME: following line is complete garbage!!!!!!!!!!!!!!!!!
+	//	FIXME: the following line is complete garbage!!!!!!!!!!!!!!!!!
 	//_leftSpeedController = new PIDController(2, 1, 2, /*src*/, PIDOutput *output);
 }
 
 
 
 
-
+double SafeDrive::reduceAngle(double angle)
+{
+	double two_pi = 2 * PI;
+	
+	while ( angle > two_pi )
+	{
+		angle -= two_pi;
+	}
+	while ( angle < -two_pi )
+	{
+		angle += two_pi;
+	}
+	
+	return angle;
+}
 
 
 
@@ -54,6 +68,31 @@ bool SafeDrive::safeModeActive()
 double SafeDrive::maxAllowedAcceleration(double direction)
 {
 	//	FIXME: implement
+	
+	
+	
+	double angle = direction + PI;
+	//	slope = tan(angle)
+	//	linear equation: Y - cg.y = slope * (X - cg.x)
+	//	Y = X*tan(angle) - cg.x*tan(angle) + cg.y
+	
+	
+	double x, y;
+	
+	
+	if ( angle = PI / 2 )
+	{
+		
+	}
+	
+	
+	
+	
+	Vector cgLocation;	//	=	_cgLocationFunction();	//	????
+	
+	
+	
+	
 	
 }
 
