@@ -3,10 +3,13 @@
 #define SAFEDRIVE_H_
 
 #include "wpilib.h"
+#include "../Vector.h"
+#include <math.h>
+#include "../Defines.h"
 
 
 
-class SafeDrive : public RobotDrive {
+class SafeDrive	{	//FIXME: : public RobotDrive {
 public:
 	SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgLocationFunction = NULL);
 	~SafeDrive();
@@ -37,8 +40,15 @@ public:
 	
 	
 private:
+	void SafeDrive::initPIDControllers();
+	
+	double reduceAngle(double angle);
+	
+	double _forceEquationXValue(Vector cg, double angle, double y);
+	double _forceEquationYValue(Vector &cg, double angle, double x);
+	
 	bool _safeModeActive;
-	Task _protectionTask;
+	//Task _protectionTask;
 	double _wheelbaseWidth, _wheelbaseLength;
 	FUNCPTR _cgLocationFunction;	//	FIXME: make this return a Vector!!!!!!!!!!!!!!!
 	

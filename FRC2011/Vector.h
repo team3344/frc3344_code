@@ -8,8 +8,8 @@
 
 
 class Vector {
-
-	Vector(double x, double y, double z);
+public:
+	Vector(double x, double y, double z = 0);
 	
 	Vector operator*(double scalar);	//	scalar multiplication
 	double operator*(const Vector &other);	//	dot product

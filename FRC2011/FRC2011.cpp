@@ -30,12 +30,6 @@ public:
 
 	FRC2011()
 	{
-		printf("FRC2011 Constructor Started\n");
-		
-		// Set drive mode
-		_driveMode = ARCADE_DRIVE;
-		
-
 		// Create a robot using standard right/left robot drive on PWMS 1, 2, 3, and #4
 		_robotDrive = new RobotDrive(1, 3, 2, 4);
 		//	FIXME: motors reversed???
@@ -147,8 +141,18 @@ public:
 	}
 	
 	
+	float throttle()
+	{
+		float throttle = _rightJoystick->GetZ();	//	-1 to 1
+		throttle += 1;	//	0 to 2
+		throttle /= 2;	//	0 to 1
+		
+		return throttle;
+	}
+	
 	void TeleopPeriodic(void)
 	{
+		_robotDrive->SetMaxOutput(throttle());
 		_robotDrive->ArcadeDrive(_rightJoystick);			// drive with arcade style (use right stick)
 		
 		

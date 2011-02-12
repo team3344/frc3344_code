@@ -6,7 +6,7 @@ SafeDrive::SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgHe
 {
 	_wheelbaseWidth = wheelbaseWidth;
 	_wheelbaseLength = wheelbaseLength;
-	_cgLocationFunction = cgLocationFunction;
+	//FIXME: _cgLocationFunction = cgLocationFunction;
 	
 	//	FIXME: initialize??????
 }
@@ -84,7 +84,7 @@ double SafeDrive::maxAllowedAcceleration(double direction)
 {
 	//	FIXME: implement
 	
-	Vector cg;	//	FIXME:	=	_cgLocationFunction();	//	????
+	Vector cg = Vector(1, 2);	//	FIXME:	=	_cgLocationFunction();	//	????
 	
 	
 	double angle = reduceAngle(direction + PI);
@@ -94,12 +94,12 @@ double SafeDrive::maxAllowedAcceleration(double direction)
 	//	X = ((Y - cg.y) / slope) + cg.x
 	
 	
-	double yIntercept = _forceEquationYValue(&cg, angle, 0);
-	double xIntercept = _forceEquationXValue(&cg, angle, 0);
+	double yIntercept = _forceEquationYValue(cg, angle, 0);
+	double xIntercept = _forceEquationXValue(cg, angle, 0);
 
 	
-	bool leftEdge = yIntercept >= 0 && yIntercept <= wheelbaseLength;
-	bool bottomEdge = xIntercept >= 0 && xIntercept <= wheelbaseWidth;
+	bool leftEdge = yIntercept >= 0 && yIntercept <= _wheelbaseLength;
+	bool bottomEdge = xIntercept >= 0 && xIntercept <= _wheelbaseWidth;
 	//bool rightEdge = ???
 	//bool topEdge = //	???
 	//	FIXME:
@@ -134,14 +134,17 @@ double SafeDrive::calculateVelocity(double left, double right)
 double SafeDrive::calculateTurnRadius(double left, double right)
 {
 	//	FIXME: does this work for all cases?????  which doesn't it work for???
-	double radius = (wheelBaseWidth * (left + right)) / (2 * (left - right));
+	double radius = (_wheelbaseWidth * (left + right)) / (2 * (left - right));
 
 	return radius;
 }
 
 double SafeDrive::calculateCentripetalAcceleration(double velocity, double turnRadius)
 {
-	return abs( pow(velocity, 2) / turnRadius );	//	v^2 / r
+	double acc = pow(velocity, 2) / turnRadius;	//	v^2 / r
+	if ( acc < 0 ) acc *= -1;	//	make it positive
+	
+	return acc;
 }
 
 
