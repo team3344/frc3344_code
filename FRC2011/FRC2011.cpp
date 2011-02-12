@@ -6,8 +6,6 @@
 
 
 
-
-
 class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive
@@ -16,22 +14,25 @@ class FRC2011 : public IterativeRobot
 	
 	DriverStation *_driverStation;
 	
-	
 	SmartDashboard *_dashboard;
 	
 	Joystick *_rightJoystick;
 	Joystick *_leftJoystick;
 	
-	
 	Compressor *_compressor;
 	
-		
+	
 public:
 
 	FRC2011()
 	{
-		// Create a robot using standard right/left robot drive on PWMS 1, 2, 3, and #4
+		// standard right/left robot drive on PWMS 1, 2, 3, and 4
 		_robotDrive = new RobotDrive(1, 3, 2, 4);
+		_robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+		_robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+		//_robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+		//_robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+		
 		//	FIXME: motors reversed???
 
 		// Acquire the Driver Station object
@@ -59,7 +60,7 @@ public:
 		
 		_dashboard->Log("hello world", "try1");
 		
-		
+		_dashboard->Log(throttle(), "Throttle");
 		
 		
 		//	power sent to motors
