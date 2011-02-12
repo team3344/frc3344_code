@@ -62,37 +62,56 @@ bool SafeDrive::safeModeActive()
 
 
 
+
+
+
 /********************	Calculations	********************/
+
+double _forceEquationXValue(Vector cg, double angle, double y)
+{
+	//	X = ((Y - cg.y) / slope) + cg.x
+	return ( (y -cg.y) / tan(angle)) + cg.x;
+}
+
+double _forceEquationYValue(Vector &cg, double angle, double x)
+{
+	//	Y = X*tan(angle) - cg.x*tan(angle) + cg.y
+	return (x - cg.x) * tan(angle) + cg.y;
+}
+
 
 double SafeDrive::maxAllowedAcceleration(double direction)
 {
 	//	FIXME: implement
 	
-	
 	Vector cg;	//	FIXME:	=	_cgLocationFunction();	//	????
-	
 	
 	
 	double angle = reduceAngle(direction + PI);
 	//	slope = tan(angle)
 	//	linear equation: Y - cg.y = slope * (X - cg.x)
 	//	Y = X*tan(angle) - cg.x*tan(angle) + cg.y
-	//	X = (Y - cg.y) / slope + cg.x
-	
-	double yIntercept = cg.y - cg.x*tan(angle);
+	//	X = ((Y - cg.y) / slope) + cg.x
 	
 	
+	double yIntercept = _forceEquationYValue(&cg, angle, 0);
+	double xIntercept = _forceEquationXValue(&cg, angle, 0);
+
 	
-	if ( angle > (PI / 2) && angle < (3/4 *PI) )	//	quadrants 2 & 3
-	{
-		//	FIXME:
-	}
-	else	//	quadrants 1 & 4
-	{
-		//	FIXME: 
-	}
+	bool leftEdge = yIntercept >= 0 && yIntercept <= wheelbaseLength;
+	bool bottomEdge = xIntercept >= 0 && xIntercept <= wheelbaseWidth;
+	//bool rightEdge = ???
+	//bool topEdge = //	???
+	//	FIXME:
+
+
+
+	bool up = angle < PI;	//	is angle in quadrants 1 or 2?
 	
 	
+
+
+
 	double x, y;	//	FIXME: solve these!!!
 	
 	
@@ -101,8 +120,7 @@ double SafeDrive::maxAllowedAcceleration(double direction)
 	//	max acceleration = g * (radius)/(cg height)
 	double maxAcceleration = (32) * (radius / cg.z);
 	
-	
-	
+	return maxAcceleration;
 }
 
 

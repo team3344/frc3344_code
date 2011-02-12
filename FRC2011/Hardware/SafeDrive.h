@@ -7,18 +7,14 @@
 
 
 class SafeDrive : public RobotDrive {
-
+public:
 	SafeDrive(double wheelbaseWidth, double wheelbaseLength, FUNCPTR cgLocationFunction = NULL);
 	~SafeDrive();
 
 	
-	
 	void Drive(double left, double right);
 	
 	//	FIXME: add TankDrive & ArcadeDrive functions!
-	
-	
-	
 	
 	
 	void setSafeModeActive(bool active);
@@ -37,12 +33,10 @@ class SafeDrive : public RobotDrive {
 	double calculateTurnRadius(double left, double right);
 
 	double calculateVelocity(double left, double right);
-
 	double calculateCentripetalAcceleration(double velocity, double turnRadius);
 	
 	
 private:
-	
 	bool _safeModeActive;
 	Task _protectionTask;
 	double _wheelbaseWidth, _wheelbaseLength;
@@ -60,7 +54,6 @@ private:
 	
 	//	max velocity???????
 };
-
 
 
 
