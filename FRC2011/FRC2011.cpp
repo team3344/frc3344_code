@@ -27,13 +27,8 @@ public:
 	FRC2011()
 	{
 		// standard right/left robot drive on PWMS 1, 2, 3, and 4
-		_robotDrive = new RobotDrive(1, 3, 2, 4);
-		_robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
-		_robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
-		//_robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
-		//_robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+		_robotDrive = new RobotDrive(1, 2, 3, 4);
 		
-		//	FIXME: motors reversed???
 
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
