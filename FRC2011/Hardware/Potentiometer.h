@@ -25,6 +25,7 @@ public:
 	float initialPosition();
 	void setInitialPosition(float iPos);
 	
+	double PIDGet();	//	returns currentPosition()
 	
 private:
 	AnalogChannel *_analogChannel;
