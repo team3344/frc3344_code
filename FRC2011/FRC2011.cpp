@@ -2,6 +2,7 @@
 #include "wpilib.h"
 #include "Hardware/Arm.h"
 #include "Hardware/Claw.h"
+#include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 
 
@@ -12,7 +13,7 @@ class FRC2011 : public IterativeRobot
 	Arm *_arm;
 	Claw *_claw;
 	
-	LightSensorArray _lightSensors;
+	LightSensorArray *_lightSensors;
 
 	DriverStation *_driverStation;
 	
@@ -42,7 +43,7 @@ public:
 
 
 		//	initialize the light sensor array
-		_lightSensors(LIGHT_SENSOR_LEFT_PORT, LIGHT_SENSOR_MID_PORT, LIGHT_SENSOR_RIGHT_PORT);	//	FIXME: is this the right syntax for a static object???
+		_lightSensors = new LightSensorArray(LIGHT_SENSOR_LEFT_PORT, LIGHT_SENSOR_MID_PORT, LIGHT_SENSOR_RIGHT_PORT);	//	FIXME: is this the right syntax for a static object???
 		
 
 		//	init and start compressor
@@ -141,7 +142,7 @@ public:
 	
 	float throttle()
 	{
-		float throttle = _joystick->GetZ();	//	-1 to 1
+		float throttle = _joystick->GetThrottle();	//	-1 to 1
 		throttle -= 1;	//	0 to -2
 		throttle /= -2;	//	0 to 1 - note that this is backwards from the default setup
 		

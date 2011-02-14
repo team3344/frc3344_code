@@ -1,6 +1,5 @@
 
 #include "wpilib.h"
-#include "Solenoid/DoubleSolenoid.h"
 #include "Potentiometer.h"
 #include "../Defines.h"
 #include <math.h>

@@ -55,12 +55,12 @@ void Potentiometer::setVoltageRange(float range)
 */
 
 
-
+/*
 //	PID Source
 double PIDGet()
 {
 	return (double)currentPosition();
 }
-
-
+*/
+#warning implement PID Source
 
