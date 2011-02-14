@@ -5,12 +5,7 @@
 #include "wpilib.h"
 
 
-
-/*
- * PIDGet() returns the current position.
- */
-
-class Potentiometer : public PIDSource, public SensorBase {	//	FIXME: implement sensor & pid stuff!!!
+class Potentiometer : public PIDSource {	//	FIXME: implement SensorBase stuff!!!
 public:
 	
 	Potentiometer(UINT32 slot, UINT32 channel);
@@ -33,7 +28,6 @@ private:
 	float _positionRange;	//	PI would mean that it can go 1/2 turn
 	float _initialPosition;
 };
-
 
 
 #endif //	POTENTIOMETER_H
