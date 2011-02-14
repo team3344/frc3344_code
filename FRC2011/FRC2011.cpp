@@ -142,8 +142,8 @@ public:
 	float throttle()
 	{
 		float throttle = _joystick->GetZ();	//	-1 to 1
-		throttle += 1;	//	0 to 2
-		throttle /= 2;	//	0 to 1
+		throttle -= 1;	//	0 to -2
+		throttle /= -2;	//	0 to 1 - note that this is backwards from the default setup
 		
 		return throttle;
 	}
