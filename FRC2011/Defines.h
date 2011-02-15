@@ -35,6 +35,16 @@ const UINT32 COMPRESSOR_RELAY_CHANNEL = 2;
 
 //	arm
 const UINT32 ELBOW_POT_CHANNEL = 1;
+const UINT32 ELBOW_CONTROLLER_CHANNEL = 2;	//	FIXME: fix
+
+const float ELBOW_MAX_POWER = .5;
+
+const float ELBOW_PID_P = 1;	//	FIXME: htf do u tune these??
+const float ELBOW_PID_I = 0;
+const float ELBOW_PID_D = 0;
+
+const UINT32 SHOULDER_SOLENOID_UP_CHANNEL = 1;	//	FIXME: fix
+const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 2;
 
 
 

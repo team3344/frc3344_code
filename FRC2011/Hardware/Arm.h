@@ -45,9 +45,8 @@ const double SHOULDER_MAX_ANGLE = 3/4 * PI;	//
 class Arm {
 
 public:
-	//	FIXME: create constructor
-	
-	
+	Arm();
+	~Arm();
 	
 	
 	
@@ -58,17 +57,19 @@ public:
 	
 	
 	//	shoulder adjustment
-	void holdShoulder();
+	//void holdShoulder();
 	void raiseShoulder();
 	void lowerShoulder();
 	
 	//	elbow adjustment
-	void holdElbow();
-	void raiseElbow();
-	void lowerElbow();
+	//void holdElbow();
+	//void raiseElbow();
+	//void lowerElbow();
+
 	
 	
-	//	FIXME: elbow target???
+	void setElbowAngle(float angle);
+	//void setAbsoluteElbowAngle(float absAngle);
 
 
 	
@@ -80,7 +81,7 @@ private:
 	//	elbow
 	Victor *_elbowController;
 	Potentiometer *_elbowPositionSensor;
-	PIDController *_elbowPositionController;
+	PIDController *_elbowPIDController;
 	
 	
 	/*
@@ -96,9 +97,9 @@ private:
 
 
 	//	FIXME: is this necessary??? what if we just limit the joint targets???
-	Task *_armProtector;	//	watches joints and shuts them off if they try to over-extend
-	void InitArmProtector();
-	void protectArm();
+	//Task *_armProtector;	//	watches joints and shuts them off if they try to over-extend
+	//void InitArmProtector();
+	//void protectArm();
 };
 
 
