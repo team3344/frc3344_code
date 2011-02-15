@@ -19,7 +19,7 @@ counter-clockwise is positive
 	______________/
 	|	backarm
 	| 
-	|   shoulder
+	|shoulder
 	|
 	|support bar
 

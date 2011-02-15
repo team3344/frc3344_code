@@ -16,6 +16,16 @@ Potentiometer::~Potentiometer()
 	delete _analogChannel;
 }
 
+bool Potentiometer::inverted()
+{
+	return _inverted;
+}
+
+void Potentiometer::setInverted(bool inverted)
+{
+	_inverted = inverted;
+}
+
 
 float Potentiometer::currentVoltage()
 {
@@ -27,7 +37,10 @@ float Potentiometer::currentPosition()
 	float voltage = currentVoltage();
 	if ( voltage < 0 ) voltage *= -1;	//	make voltage positive
 
-	float offset = (voltage / POTENTIOMETER_VOLTAGE_READING_RANGE) * _positionRange;
+	float portion = voltage / POTENTIOMETER_VOLTAGE_READING_RANGE;
+	if (inverted) portion = 1 - portion;
+	float offset = portion * _positionRange;
+
 	return offset + _initialPosition;
 }
 

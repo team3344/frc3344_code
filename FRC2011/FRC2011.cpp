@@ -4,7 +4,10 @@
 #include "Hardware/Claw.h"
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
+#include "Controller/Gamepad.h"
 
+
+#define LOGITECH_CONTROLLER
 
 
 class FRC2011 : public IterativeRobot
@@ -17,9 +20,14 @@ class FRC2011 : public IterativeRobot
 
 	DriverStation *_driverStation;
 	
-	Joystick *_joystick;
-	
 	Compressor *_compressor;
+
+
+#ifdef LOGITECH_CONTROLLER
+	Gamepad *_logitechController;
+#else
+	Joystick *_joystick;
+#endif
 	
 	
 public:
@@ -33,9 +41,12 @@ public:
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
 
-
-		// Define joysticks being used at USB port #1 and USB port #2 on the Drivers Station
+#ifdef LOGITECH_CONTROLLER
+		_gamepad = new Gamepad(1);
+#else
+		// Define joystick being used at USB port #1 on the Drivers Station
 		_joystick = new Joystick(1);
+#endif
 		
 		
 		//	initialize the SmartDashboard
@@ -142,9 +153,13 @@ public:
 	
 	float throttle()
 	{
+#ifdef LOGITECH_CONTROLLER
+		float throttle = 1;	//	FIXME: what to use on the controller for this stuff???
+#else
 		float throttle = _joystick->GetThrottle();	//	-1 to 1
 		throttle -= 1;	//	0 to -2
 		throttle /= -2;	//	0 to 1 - note that this is backwards from the default setup
+#endif
 		
 		return throttle;
 	}
@@ -152,8 +167,12 @@ public:
 	void TeleopPeriodic(void)
 	{
 		_robotDrive->SetMaxOutput(throttle());
+
+#ifdef LOGITECH_CONTROLLER
+		_robotDrive->TankDrive(_gamepad->GetLeftY(), _gamepad->GetRightY());
+#else
 		_robotDrive->ArcadeDrive(_joystick);			// drive with arcade style (use right stick)
-		
+#endif
 		
 		LogToDashboard();
 		
