@@ -2,6 +2,7 @@
 #ifndef GAMEPAD_H_
 #define GAMEPAD_H_
 
+#include "wpilib.h"
 #include <stdio.h>
 
 class DriverStation;
@@ -26,7 +27,7 @@ public:
     
     typedef enum
     {
-    	kLeftButton, kBottomButton, kRightButton, kTopButton,
+    	kLeftButton = 1, kBottomButton, kRightButton, kTopButton,
     	kLeftTopTrigger, kRightTopTrigger, kLeftBottomTrigger, kRightBottomTrigger,
     	kLeftCenterButton, kRightCenterButton,
     	kLeftAnalogStickButton, kRightAnalogStickButton
@@ -35,6 +36,10 @@ public:
     Gamepad(UINT32 port);
     ~Gamepad();
 
+    
+    void logButtons();
+    
+    
     float GetLeftX();
     float GetLeftY();
     float GetRightX();

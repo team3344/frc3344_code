@@ -24,6 +24,14 @@ float LineController::speed()
 }
 
 
+float LineController::calculateTurn()
+{
+	//	FIXME: implement
+	
+	
+	
+}
+
 
 bool LineController::followingLine()
 {

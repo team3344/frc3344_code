@@ -101,6 +101,13 @@ bool Gamepad::GetNumberedButton(UINT32 button)
     return ((0x1 << (button-1)) & ap_ds->GetStickButtons(a_port)) != 0;
 }
 
+
+void Gamepad::logButtons()
+{
+	SmartDashboard::Log(ap_ds->GetStickButtons(a_port), "Gamepad Buttons");
+}
+
+
 /**
  * Get the button value for the buttons defined by the ButtonType enum
  *

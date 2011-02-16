@@ -10,7 +10,7 @@ JBController::JBController(DriverStation *ds)
 
 JBController::~JBController()
 {
-	delete ds;	//	FIXME: is this right???  ref counting???
+	//delete _driverStation;	//	FIXME: is this right???  ref counting???
 }
 
 float JBController::getElbowAngle()

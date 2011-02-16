@@ -21,7 +21,7 @@ class LineController {
 	void setSpeed(float speed);
 	float speed();
 	
-	
+	float calculateTurn();
 	
 	bool followingLine();
 	
