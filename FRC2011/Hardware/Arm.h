@@ -49,7 +49,6 @@ public:
 	~Arm();
 	
 	
-	
 	//	arm position
 	float shoulderAngle();		//	0 is horizontal.  vertical is pi / 2
 	float elbowAngle();			//	0 is fully extended.  relative to "backarm"
@@ -67,12 +66,10 @@ public:
 	//void lowerElbow();
 
 	
-	
 	void setElbowAngle(float angle);
 	//void setAbsoluteElbowAngle(float absAngle);
 
 
-	
 private:
 	//	solenoid that controls shoulder cylinder
 	DoubleSolenoid *_shoulderSolenoid;

@@ -5,9 +5,11 @@
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 #include "Controller/Gamepad.h"
+#include "Controller/JBController.h"
 
 
 #define LOGITECH_CONTROLLER
+#define JB_CONTROLLER
 
 
 class FRC2011 : public IterativeRobot
@@ -22,6 +24,12 @@ class FRC2011 : public IterativeRobot
 	
 	Compressor *_compressor;
 
+	
+#ifdef JB_CONTROLLER
+	JBController *_jbController;
+#endif
+	
+	
 
 #ifdef LOGITECH_CONTROLLER
 	Gamepad *_gamepad;
@@ -48,6 +56,10 @@ public:
 		_joystick = new Joystick(1);
 #endif
 		
+		
+#ifdef JB_CONTROLLER
+		_jbController = new JBController(_driverStation);
+#endif
 		
 		//	initialize the SmartDashboard
 		SmartDashboard::init();
