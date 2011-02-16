@@ -38,7 +38,7 @@ float Potentiometer::currentPosition()
 	if ( voltage < 0 ) voltage *= -1;	//	make voltage positive
 
 	float portion = voltage / POTENTIOMETER_VOLTAGE_READING_RANGE;
-	if (inverted) portion = 1 - portion;
+	if (_inverted) portion = 1 - portion;
 	float offset = portion * _positionRange;
 
 	return offset + _initialPosition;

@@ -24,7 +24,7 @@ class FRC2011 : public IterativeRobot
 
 
 #ifdef LOGITECH_CONTROLLER
-	Gamepad *_logitechController;
+	Gamepad *_gamepad;
 #else
 	Joystick *_joystick;
 #endif

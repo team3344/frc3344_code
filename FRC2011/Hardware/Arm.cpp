@@ -7,7 +7,7 @@ Arm::Arm()
 {
 	_shoulderSolenoid = new DoubleSolenoid(SHOULDER_SOLENOID_UP_CHANNEL, SHOULDER_SOLENOID_UP_CHANNEL);
 
-	_elbowPositionSensor = new Potentiometer(ELBOW_POT_CHANNEL);
+	_elbowPositionSensor = new Potentiometer(ANALOG_BREAKOUT_SLOT, ELBOW_POT_CHANNEL);
 	//	FIXME: set parameters on the pot
 
 	_elbowController = new Victor(ELBOW_CONTROLLER_CHANNEL);
@@ -89,7 +89,7 @@ void Arm::setElbowAngle(float angle)
 		_elbowTarget = angle;
 
 	//	set PID
-	_elbowPIDController->SetSetPoint(_elbowTarget);
+	_elbowPIDController->SetSetpoint(_elbowTarget);
 }
 
 
