@@ -166,7 +166,15 @@ public:
 	float throttle()
 	{
 #ifdef LOGITECH_CONTROLLER
-		float throttle = 1;	//	FIXME: what to use on the controller for this stuff???
+		float throttle;
+		
+		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+			throttle = DRIVE_SPEED_HIGH;
+		else if ( _gamepad->GetButton(Gamepad::kLeftTopTrigger))
+			throttle = DRIVE_SPEED_LOW;
+		else
+			throttle = DRIVE_SPEED_MID;
+		
 #else
 		float throttle = _joystick->GetThrottle();	//	-1 to 1
 		throttle -= 1;	//	0 to -2

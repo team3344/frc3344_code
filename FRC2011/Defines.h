@@ -17,6 +17,13 @@ const UINT32 SIDECAR_SLOT = 4;
 
 
 
+//	drive speeds
+const float DRIVE_SPEED_HIGH = 1;
+const float DRIVE_SPEED_MID = .6;
+const float DRIVE_SPEED_LOW = .3;
+
+
+
 //	light sensors	//	FIXME: GET THE REAL VALUES FOR THESE
 const UINT32 LIGHT_SENSOR_LEFT_PORT = 1;
 const UINT32 LIGHT_SENSOR_MID_PORT = 2;
