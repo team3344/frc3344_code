@@ -49,6 +49,10 @@ public:
 	~Arm();
 	
 	
+	
+	void logInfo();
+	
+	
 	//	arm position
 	float shoulderAngle();		//	0 is horizontal.  vertical is pi / 2
 	float elbowAngle();			//	0 is fully extended.  relative to "backarm"

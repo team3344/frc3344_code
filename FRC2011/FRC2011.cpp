@@ -92,7 +92,7 @@ public:
 		
 		
 		
-		_arm->LogInfo();
+		_arm->logInfo();
 		
 		
 		
