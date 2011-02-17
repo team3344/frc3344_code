@@ -45,6 +45,9 @@ public:
 		// standard right/left robot drive on PWMS 1, 2, 3, and 4
 		_robotDrive = new RobotDrive(1, 2, 3, 4);
 		
+		
+		_arm = new Arm();
+		
 
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
@@ -201,6 +204,21 @@ public:
 #endif
 		
 		LogToDashboard();
+		
+		
+		
+		
+		
+		//	arm
+		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
+		{
+			_arm->lowerShoulder();
+		}
+		else if ( _gamepad->GetButton(Gamepad::kTopButton) )
+		{
+			_arm->raiseShoulder();
+		}
+		
 		
 		
 	} // TeleopPeriodic(void)

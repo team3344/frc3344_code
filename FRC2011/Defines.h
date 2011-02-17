@@ -19,8 +19,8 @@ const UINT32 SIDECAR_SLOT = 4;
 
 //	drive speeds
 const float DRIVE_SPEED_HIGH = 1;
-const float DRIVE_SPEED_MID = .4;
-const float DRIVE_SPEED_LOW = .2;
+const float DRIVE_SPEED_MID = .45;
+const float DRIVE_SPEED_LOW = .27;
 
 
 
@@ -35,8 +35,8 @@ const float LIGHT_SENSOR_SPACING = 1.5;	//	FIXME: fix
 
 
 //	FIXME: this isn't right
-const UINT32 PRESSURE_SWITCH_CHANNEL = 1;
-const UINT32 COMPRESSOR_RELAY_CHANNEL = 2;
+const UINT32 PRESSURE_SWITCH_CHANNEL = 5;
+const UINT32 COMPRESSOR_RELAY_CHANNEL = 1;
 
 
 
@@ -50,8 +50,10 @@ const float ELBOW_PID_P = 1;	//	FIXME: htf do u tune these??
 const float ELBOW_PID_I = 0;
 const float ELBOW_PID_D = 0;
 
-const UINT32 SHOULDER_SOLENOID_UP_CHANNEL = 1;	//	FIXME: fix
-const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 2;
+
+
+const UINT32 SHOULDER_SOLENOID_UP_CHANNEL = 2;	//	FIXME: fix
+const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 1;
 
 
 
