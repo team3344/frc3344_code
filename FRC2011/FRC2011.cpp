@@ -91,6 +91,11 @@ public:
 		SmartDashboard::Log(throttle(), "Throttle");
 		
 		
+		
+		_arm->LogInfo();
+		
+		
+		
 		//	power sent to motors
 		
 		

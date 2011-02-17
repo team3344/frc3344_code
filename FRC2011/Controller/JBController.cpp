@@ -27,3 +27,4 @@ bool JBController::clawClosed()
 {
 	//	FIXME: implement
 }
+

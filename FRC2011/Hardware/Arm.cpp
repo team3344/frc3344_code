@@ -24,8 +24,14 @@ Arm::~Arm()
 }
 
 
-
-
+void Arm::logInfo()
+{
+	SmartDashboard::Log(_elbowPositionSensor->initialPosition(), "Elbow Pot Initial Position (rads)");
+	SmartDashboard::Log(_elbowPositionSensor->positionRange(), "Elbow Pot Position Range (rads)");
+	SmartDashboard::Log(_elbowPositionSensor->currentVoltage(), "Elbow Pot Current Voltage");
+	SmartDashboard::Log(_elbowPositionSensor->currentPosition(), "ELbow Pot Current Position (rads)");
+	SmartDashboard::Log(_elbowPositionSensor->inverted(), "Elbow Pot Inverted?");	
+}
 
 
 float Arm::shoulderAngle()
