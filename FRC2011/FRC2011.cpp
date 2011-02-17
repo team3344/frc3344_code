@@ -226,6 +226,29 @@ public:
 		
 		
 		
+		
+		
+		/*	TEMPORARY ELBOW STUFF	*/
+		
+		Gamepad::DPadDirection dPad = _gamepad->GetDPad();
+		
+		if ( dPad == Gamepad::kUp )
+		{
+			_arm->_elbowController->Set(ELBOW_MAX_POWER);	//	up
+		}
+		else if ( dPad == Gamepad::kDown )
+		{
+			_arm->_elbowController->Set(-ELBOW_MAX_POWER);	//	down
+		}
+		else
+		{
+			_arm->_elbowController->Set(0);	//	turn it off
+		}
+		
+		/*	TEMPORARY ELBOW STUFF	*/
+		
+		
+		
 	} // TeleopPeriodic(void)
 			
 };

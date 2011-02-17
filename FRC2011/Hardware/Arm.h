@@ -69,6 +69,7 @@ public:
 	void setElbowAngle(float angle);
 	//void setAbsoluteElbowAngle(float absAngle);
 
+	Victor *_elbowController;
 
 private:
 	//	solenoid that controls shoulder cylinder
@@ -76,7 +77,6 @@ private:
 	
 	
 	//	elbow
-	Victor *_elbowController;
 	Potentiometer *_elbowPositionSensor;
 	PIDController *_elbowPIDController;
 	
