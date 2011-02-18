@@ -13,6 +13,8 @@ BeastController::setupCypressBoard()
 	//enum tDigitalConfig {kUnknown, kInputFloating, kInputPullUp
 	//	kInputPullDown, kOutput, kPWM, kAnalogComparator};
 	//void SetDigitalConfig(UINT32 channel, tDigitalConfig config);
+	
+	SetDigitalConfig(CYPRESS_DI_PIN_MINIBOT_DEPLOYED, kInputPullDown);	//	pin is off by default
 }
 
 

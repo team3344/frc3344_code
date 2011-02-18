@@ -88,12 +88,6 @@ public:
 	
 	void LogToDashboard()
 	{
-		//	relay ports
-		
-		
-		
-		SmartDashboard::Log("hello world", "try1");
-		
 		SmartDashboard::Log(throttle(), "Throttle");
 		
 		
@@ -113,15 +107,13 @@ public:
 
 		//	arm position
 		
-		//	camera image
-		
 		//	pressure of storage tanks
 		
 		//	
 		
 		
 		
-		_gamepad->logButtons();
+		//_gamepad->logButtons();
 		
 	}
 	
@@ -220,7 +212,7 @@ public:
 		
 		
 		
-		//	arm
+		//	arm - shoulder control w/logitech controller
 		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
 		{
 			_arm->lowerShoulder();
