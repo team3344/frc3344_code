@@ -46,7 +46,13 @@ public:
 		_robotDrive = new RobotDrive(1, 2, 3, 4);
 		
 		
-		_arm = new Arm();
+		//	FIXME: remove this
+		//Victor *v = new Victor(SIDECAR_SLOT, 5);
+		//v->Set(.1);
+		
+		
+		
+		//_arm = new Arm();
 		
 
 		// Acquire the Driver Station object

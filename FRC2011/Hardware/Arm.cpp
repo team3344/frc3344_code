@@ -10,7 +10,7 @@ Arm::Arm()
 	_elbowPositionSensor = new Potentiometer(ANALOG_BREAKOUT_SLOT, ELBOW_POT_CHANNEL);
 	//	FIXME: set parameters on the pot
 
-	_elbowController = new Victor(ELBOW_CONTROLLER_CHANNEL);
+	_elbowController = new Victor(SIDECAR_SLOT, ELBOW_CONTROLLER_CHANNEL);
 
 	//	source = pot, output = victor
 	_elbowPIDController = new PIDController(ELBOW_PID_P, ELBOW_PID_I, ELBOW_PID_D, _elbowPositionSensor, _elbowController);

@@ -21,6 +21,11 @@ bool Potentiometer::inverted()
 	return _inverted;
 }
 
+float Potentiometer::initialPosition()
+{
+	return _initialPosition;
+}
+
 void Potentiometer::setInverted(bool inverted)
 {
 	_inverted = inverted;
