@@ -5,11 +5,11 @@
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 #include "Controller/Gamepad.h"
-#include "Controller/JBController.h"
+#include "Controller/BeastController.h"
 
 
 #define LOGITECH_CONTROLLER
-#define JB_CONTROLLER
+#define BEAST_CONTROLLER
 
 
 class FRC2011 : public IterativeRobot
@@ -25,8 +25,8 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 
 	
-#ifdef JB_CONTROLLER
-	JBController *_jbController;
+#ifdef BEAST_CONTROLLER
+	BeastController *_beastController;
 #endif
 	
 	
@@ -52,7 +52,7 @@ public:
 		
 		
 		
-		//_arm = new Arm();
+		_arm = new Arm();
 		
 
 		// Acquire the Driver Station object
@@ -66,8 +66,8 @@ public:
 #endif
 		
 		
-#ifdef JB_CONTROLLER
-		_jbController = new JBController(_driverStation);
+#ifdef BEAST_CONTROLLER
+		_beastController = new BeastController(_driverStation);
 #endif
 		
 		//	initialize the SmartDashboard
