@@ -40,7 +40,8 @@ public:
 	
 	
 private:
-	DriverStationEnhancedIO *_dsIO;
+	void setupCypressBoard();
+	DriverStation *_ds;
 	
 };
 

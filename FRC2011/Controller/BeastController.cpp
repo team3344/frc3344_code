@@ -5,16 +5,21 @@
 
 BeastController::BeastController(DriverStation *ds)
 {
-	_dsIO = ds->GetEnhancedIO();
+	_ds = ds;
 }
 
-BeastController::setupCypressBoard()
+void BeastController::setupCypressBoard()
 {
 	//enum tDigitalConfig {kUnknown, kInputFloating, kInputPullUp
 	//	kInputPullDown, kOutput, kPWM, kAnalogComparator};
 	//void SetDigitalConfig(UINT32 channel, tDigitalConfig config);
 	
-	SetDigitalConfig(CYPRESS_DI_PIN_MINIBOT_DEPLOYED, kInputPullDown);	//	pin is off by default
+	
+	
+	_ds->GetEnhancedIO().SetDigitalConfig(CYPRESS_DI_PIN_MINIBOT_DEPLOYED,
+											DriverStationEnhancedIO::kInputPullDown);
+	
+	
 }
 
 
@@ -30,7 +35,7 @@ float BeastController::getElbowAngle()
 	//double GetAnalogInRatio(UINT32 channel);
 }
 
-float BeastController::getShoulderAngle()
+bool BeastController::getShoulderUp()
 {
 	//	FIXME: implement
 }

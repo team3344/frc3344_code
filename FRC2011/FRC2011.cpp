@@ -33,10 +33,10 @@ class FRC2011 : public IterativeRobot
 
 #ifdef LOGITECH_CONTROLLER
 	Gamepad *_gamepad;
-#else
-	Joystick *_joystick;
 #endif
 	
+
+	Joystick *_armJoystick;
 	
 public:
 
@@ -60,11 +60,9 @@ public:
 
 #ifdef LOGITECH_CONTROLLER
 		_gamepad = new Gamepad(1);
-#else
-		// Define joystick being used at USB port #1 on the Drivers Station
-		_joystick = new Joystick(1);
 #endif
 		
+		_armJoystick = new Joystick(2);
 		
 #ifdef BEAST_CONTROLLER
 		_beastController = new BeastController(_driverStation);
@@ -88,9 +86,6 @@ public:
 	
 	void LogToDashboard()
 	{
-		SmartDashboard::Log(throttle(), "Throttle");
-		
-		
 		
 		_arm->logInfo();
 		
@@ -169,63 +164,24 @@ public:
 	}
 	
 	
-	float throttle()
-	{
-#ifdef LOGITECH_CONTROLLER
-		float throttle;
-		
-		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
-		{
-			throttle = DRIVE_SPEED_HIGH;
-		}
-		else if ( _gamepad->GetButton(Gamepad::kLeftTopTrigger) )
-		{
-			throttle = DRIVE_SPEED_LOW;
-		}
-		else
-		{
-			throttle = DRIVE_SPEED_MID;
-		}
-		
-#else
-		float throttle = _joystick->GetThrottle();	//	-1 to 1
-		throttle -= 1;	//	0 to -2
-		throttle /= -2;	//	0 to 1 - note that this is backwards from the default setup
-#endif
-		
-		return throttle;
-	}
 	
-	void TeleopPeriodic(void)
+	
+	
+	/***************	TeleOp		***************/
+	
+	void JoystickArmControl(Joystick *j)
 	{
-		_robotDrive->SetMaxOutput(throttle());
-
-#ifdef LOGITECH_CONTROLLER
-		_robotDrive->TankDrive(_gamepad->GetLeftY(), _gamepad->GetRightY());
-#else
-		_robotDrive->ArcadeDrive(_joystick);			// drive with arcade style (use right stick)
-#endif
-		
-		LogToDashboard();
+		//	elbow control w/y-axis of joystick
+		_arm->_elbowController->Set( -(j->GetY()) );
 		
 		
 		
-		
-		
-		//	arm - shoulder control w/logitech controller
-		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
-		{
-			_arm->lowerShoulder();
-		}
-		else if ( _gamepad->GetButton(Gamepad::kTopButton) )
-		{
-			_arm->raiseShoulder();
-		}
+		//	FIXME: add stuff for shoulder
 		
 		
 		
-		//	claw
-		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+		//	claw open/close
+		if ( j->GetTrigger() )
 		{
 			_claw->open();
 		}
@@ -233,33 +189,83 @@ public:
 		{
 			_claw->close();
 		}
+	}
+	
+	
+	
+	
+	void GamepadDrive(Gamepad *gp)
+	{
+		float throttle;
+		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+			throttle = DRIVE_SPEED_HIGH;
+		else if ( _gamepad->GetButton(Gamepad::kLeftTopTrigger) )
+			throttle = DRIVE_SPEED_LOW;
+		else
+			throttle = DRIVE_SPEED_MID;
+		
+		_robotDrive->SetMaxOutput(throttle);
+		_robotDrive->TankDrive(gp->GetLeftY(), gp->GetRightY());
+	}
+	
+	
+	//	arcade drive w/a joystick
+	void JoystickDrive(Joystick *j)
+	{
+		float throttle = j->GetThrottle();	//	-1 to 1
+		throttle -= 1;	//	0 to -2
+		throttle /= -2;	//	0 to 1 - backwards from the default setup
 		
 		
+		_robotDrive->SetMaxOutput(throttle);
+		_robotDrive->ArcadeDrive(j);
+	}
+	
+	
+	void GamepadArmControl(Gamepad *gp)
+	{
+		//	arm shoulder control
+		if ( gp->GetButton(Gamepad::kBottomButton) )
+			_arm->lowerShoulder();
+		else if ( gp->GetButton(Gamepad::kTopButton) )
+			_arm->raiseShoulder();
+		
+		
+		
+		//	claw control w/top right trigger
+		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+			_claw->open();
+		else
+			_claw->close();
 		
 		
 		
 		/*	TEMPORARY ELBOW STUFF	*/
-		
-		Gamepad::DPadDirection dPad = _gamepad->GetDPad();
+		Gamepad::DPadDirection dPad = gp->GetDPad();
 		
 		if ( dPad == Gamepad::kUp )
-		{
 			_arm->_elbowController->Set(ELBOW_MAX_POWER);	//	up
-		}
 		else if ( dPad == Gamepad::kDown )
-		{
 			_arm->_elbowController->Set(-ELBOW_MAX_POWER);	//	down
-		}
 		else
-		{
 			_arm->_elbowController->Set(0);	//	turn it off
-		}
-		
 		/*	TEMPORARY ELBOW STUFF	*/
+	}
+	
+	
+	
+	
+	void TeleopPeriodic(void)
+	{
+		GamepadDrive(_gamepad);
+		JoystickArmControl(_armJoystick);
 		
-		
-		
+		LogToDashboard();
 	} // TeleopPeriodic(void)
+	
+	
+	
+	
 			
 };
 
