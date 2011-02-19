@@ -31,8 +31,8 @@ class FRC2011 : public IterativeRobot
 	
 	
 
-	Gamepad *_gamepad;
-	
+	Gamepad *_driverGamepad;
+	Gamepad *_armGamepad;
 
 	Joystick *_armJoystick;
 	
@@ -57,8 +57,8 @@ public:
 		_driverStation = DriverStation::GetInstance();
 
 		
-		_gamepad = new Gamepad(1);
-
+		_driverGamepad = new Gamepad(1);
+		_armGamepad = new Gamepad(2);
 		
 		//_armJoystick = new Joystick(2);
 		
@@ -108,7 +108,7 @@ public:
 		
 		
 		
-		_gamepad->logButtons();
+		//_gamepad->logButtons();
 		
 	}
 	
@@ -236,7 +236,7 @@ public:
 		
 		
 		//	claw control w/top right trigger
-		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 			_claw->open();
 		else
 			_claw->close();
@@ -260,17 +260,14 @@ public:
 	
 	void TeleopPeriodic(void)
 	{
-		GamepadDrive(_gamepad);
-		GamepadArmControl(_gamepad);
+		GamepadDrive(_driverGamepad);
+		GamepadArmControl(_armGamepad);
 		//JoystickArmControl(_armJoystick);
 		
 		LogToDashboard();
 	} // TeleopPeriodic(void)
 	
 	
-	
-	
-			
 };
 
 START_ROBOT_CLASS(FRC2011);
