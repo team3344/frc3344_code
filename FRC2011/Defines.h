@@ -19,7 +19,7 @@ const UINT32 SIDECAR_SLOT = 4;
 
 //	drive speeds
 const float DRIVE_SPEED_HIGH = 1;
-const float DRIVE_SPEED_MID = .45;
+const float DRIVE_SPEED_MID = .65;
 const float DRIVE_SPEED_LOW = .27;
 
 
