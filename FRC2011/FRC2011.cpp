@@ -87,6 +87,8 @@ public:
 		
 		_arm->logInfo();
 		
+		_lightSensors->logInfo();
+		
 		
 		
 		//	power sent to motors

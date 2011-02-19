@@ -21,6 +21,8 @@ public:
 	
 	LightSensorState state();
 	
+	void logInfo();
+	
 	
 private:
 	DigitalInput *_left, *_mid, *_right;

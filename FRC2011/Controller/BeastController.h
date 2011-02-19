@@ -18,9 +18,14 @@ const UINT32 CYPRESS_DI_PIN_RIGHT_AUTONOMOUS = 4;	//
 const UINT32 CYPRESS_DI_PIN_RIGHT_FORK = 8;	//	if left is off, go right
 
 
-//const float CYPRESS_DIO_VOLTAGE = 3.3;	//	can be 3.3 or 5, depending on the jumpers on the board
 
 
+const UINT32 kLeftAutonomous 		= 1 << 0;
+const UINT32 kRightAutonomous		= 1 << 1;
+const UINT32 kStraightAutonomous	= 1 << 2;
+const UINT32 kForkedAutonomous		= 1 << 3;
+
+typedef UINT32 AutonomousPosition;
 
 
 
@@ -28,13 +33,6 @@ const UINT32 CYPRESS_DI_PIN_RIGHT_FORK = 8;	//	if left is off, go right
 class BeastController {
 	
 public:
-	
-	typedef enum {
-		kLeftAutonomousPosition,
-		kRightAutonomousPosition,
-		kCenterForkLeftAutonomousPosition,
-		kCenterForkRightAutonomousPosition
-	} AutonomousPosition;
 	
 	
 	BeastController(DriverStation *ds);

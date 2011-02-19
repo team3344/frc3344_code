@@ -59,16 +59,29 @@ bool BeastController::digitalIn(UINT32 pin)
 	return _ds->GetEnhancedIO().GetDigital(pin);
 }
 
-BeastController::AutonomousPosition BeastController::autonomousPosition()
+AutonomousPosition BeastController::autonomousPosition()
 {
-	if ( digitalIn(CYPRESS_DI_PIN_LEFT_AUTONOMOUS) )
-		return BeastController::kLeftAutonomousPosition;
-	else if ( digitalIn(CYPRESS_DI_PIN_RIGHT_AUTONOMOUS) )
-		return BeastController::kRightAutonomousPosition;
-	else if ( digitalIn(CYPRESS_DI_PIN_RIGHT_FORK) )
-		return BeastController::kCenterForkRightAutonomousPosition;
+	AutonomousPosition pos = 0;
+	
+	if ( digitalIn(CYPRESS_DI_PIN_LEFT_AUTONOMOUS) ||
+			!digitalIn(CYPRESS_DI_PIN_RIGHT_FORK) )
+	{
+		pos = kLeftAutonomous;
+	}
 	else
-		return BeastController::kCenterForkLeftAutonomousPosition;
+	{
+		pos = kRightAutonomous;
+	}
+	
+	if ( !digitalIn(CYPRESS_DI_PIN_LEFT_AUTONOMOUS) &&
+			!digitalIn(CYPRESS_DI_PIN_RIGHT_AUTONOMOUS) )
+	{
+		pos |= kForkedAutonomous;
+	}
+	else
+	{
+		pos |= kStraightAutonomous;
+	}
 }
 
 

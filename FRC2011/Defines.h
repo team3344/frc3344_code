@@ -24,7 +24,7 @@ const float DRIVE_SPEED_LOW = .27;
 
 
 
-//	light sensors	//	FIXME: GET THE REAL VALUES FOR THESE
+//	light sensors
 const UINT32 LIGHT_SENSOR_LEFT_PORT = 1;
 const UINT32 LIGHT_SENSOR_MID_PORT = 2;
 const UINT32 LIGHT_SENSOR_RIGHT_PORT = 3;
@@ -42,7 +42,7 @@ const UINT32 CLAW_RELAY_CHANNEL = 2;
 
 //	arm
 const UINT32 ELBOW_POT_CHANNEL = 1;
-const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;	//	FIXME: Channel for the victor - connected by Y cable
+const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;
 
 const float ELBOW_MAX_POWER = .4;
 

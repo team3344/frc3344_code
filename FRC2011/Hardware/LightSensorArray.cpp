@@ -16,9 +16,18 @@ LightSensorArray::~LightSensorArray()
 }
 
 
+void LightSensorArray::logInfo()
+{
+	SmartDashboard::Log(state(), "Light Sensor State");
+	SmartDashboard::Log(!(bool)_left->Get(), "Left Light Sensor");
+	SmartDashboard::Log(!(bool)_mid->Get(), "Mid Light Sensor");
+	SmartDashboard::Log(!(bool)_right->Get(), "Right Light Sensor");
+}
+
+
 LightSensorArray::LightSensorState LightSensorArray::state()
 {
-	LightSensorState state = (LightSensorState)( ( _left->Get() ) || ( _mid->Get() << 1 ) || ( _right->Get() << 2 ) );
+	LightSensorState state = (LightSensorState)( ( !(bool)_left->Get() ) || ( !(bool)_mid->Get() << 1 ) || ( !(bool)_right->Get() << 2 ) );
 	return state;
 }
 
