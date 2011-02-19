@@ -16,19 +16,16 @@ Potentiometer::~Potentiometer()
 	delete _analogChannel;
 }
 
-bool Potentiometer::inverted()
+void Potentiometer::calibrate(float voltage1, float position1, float voltage2, float position2)
 {
-	return _inverted;
+	_slope = (position2 - position1) / (voltage2 - voltage1);
+	_intercept = position1 - (_slope * voltage1);
 }
 
-float Potentiometer::initialPosition()
-{
-	return _initialPosition;
-}
 
-void Potentiometer::setInverted(bool inverted)
+float Potentiometer::currentPosition()
 {
-	_inverted = inverted;
+	return (currentVoltage() * _slope) + _intercept;
 }
 
 
@@ -36,42 +33,6 @@ float Potentiometer::currentVoltage()
 {
 	return _analogChannel->GetVoltage();
 }
-
-float Potentiometer::currentPosition()
-{
-	float voltage = currentVoltage();
-	if ( voltage < 0 ) voltage *= -1;	//	make voltage positive
-
-	float portion = voltage / POTENTIOMETER_VOLTAGE_READING_RANGE;
-	if (_inverted) portion = 1 - portion;
-	float offset = portion * _positionRange;
-
-	return offset + _initialPosition;
-}
-
-
-float Potentiometer::positionRange()
-{
-	return _positionRange;
-}
-
-void Potentiometer::setPositionRange(float range)
-{
-	_positionRange = range;
-}
-
-/*
-float Potentiometer::voltageRange()
-{
-	return _voltageRange;
-}
-
-void Potentiometer::setVoltageRange(float range)
-{
-	_voltageRange = range;
-}
-*/
-
 
 
 //	PID Source

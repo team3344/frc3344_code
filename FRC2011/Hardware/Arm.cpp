@@ -10,7 +10,12 @@ Arm::Arm()
 											SHOULDER_SOLENOID_DOWN_CHANNEL);
 
 	_elbowPositionSensor = new Potentiometer(ANALOG_BREAKOUT_SLOT, ELBOW_POT_CHANNEL);
-	//	FIXME: set parameters on the pot
+	
+	//	@v= 5.017, angle= 2.70526 rad
+	//	@v= 3.535, angle= .48869 rad
+	_elbowPositionSensor->calibrate(5.017, 2.70526,
+										3.535, .48869);
+	
 
 	_elbowController = new Victor(SIDECAR_SLOT, ELBOW_CONTROLLER_CHANNEL);
 
@@ -28,11 +33,8 @@ Arm::~Arm()
 
 void Arm::logInfo()
 {
-	SmartDashboard::Log(_elbowPositionSensor->initialPosition(), "Elbow Pot Initial Position (rads)");
-	SmartDashboard::Log(_elbowPositionSensor->positionRange(), "Elbow Pot Position Range (rads)");
 	SmartDashboard::Log(_elbowPositionSensor->currentVoltage(), "Elbow Pot Current Voltage");
-	SmartDashboard::Log(_elbowPositionSensor->currentPosition(), "ELbow Pot Current Position (rads)");
-	SmartDashboard::Log(_elbowPositionSensor->inverted(), "Elbow Pot Inverted?");	
+	SmartDashboard::Log(_elbowPositionSensor->currentPosition(), "ELbow Pot Current Position (rads)");	
 }
 
 
