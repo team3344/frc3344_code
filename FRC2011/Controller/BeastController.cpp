@@ -61,18 +61,14 @@ bool BeastController::digitalIn(UINT32 pin)
 
 BeastController::AutonomousPosition BeastController::autonomousPosition()
 {
-	const UINT32 CYPRESS_DI_PIN_LEFT_AUTONOMOUS = 1;	//	if it's neither of these, go center
-	const UINT32 CYPRESS_DI_PIN_RIGHT_AUTONOMOUS = 2;	//
-	const UINT32 CYPRESS_DI_PIN_LEFT_FORK = 1;
-	
 	if ( digitalIn(CYPRESS_DI_PIN_LEFT_AUTONOMOUS) )
 		return BeastController::kLeftAutonomousPosition;
 	else if ( digitalIn(CYPRESS_DI_PIN_RIGHT_AUTONOMOUS) )
 		return BeastController::kRightAutonomousPosition;
-	else if ( digitalIn(CYPRESS_DI_PIN_LEFT_FORK) )
-		return BeastController::kCenterForkLeftAutonomousPosition;
-	else
+	else if ( digitalIn(CYPRESS_DI_PIN_RIGHT_FORK) )
 		return BeastController::kCenterForkRightAutonomousPosition;
+	else
+		return BeastController::kCenterForkLeftAutonomousPosition;
 }
 
 
