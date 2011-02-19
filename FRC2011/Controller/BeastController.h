@@ -28,6 +28,15 @@ const UINT32 CYPRESS_DI_PIN_LEFT_FORK = 1;	//	if left is off, go right
 class BeastController {
 	
 public:
+	
+	typedef enum {
+		kLeftAutonomousPosition,
+		kRightAutonomousPosition,
+		kCenterForkLeftAutonomousPosition,
+		kCenterForkRightAutonomousPosition
+	} AutonomousPosition;
+	
+	
 	BeastController(DriverStation *ds);
 	~BeastController();
 	
@@ -36,13 +45,16 @@ public:
 	
 	bool clawClosed();
 	
+	AutonomousPosition autonomousPosition();
+	
 	bool minibotDeployed();
 	
 	
 private:
 	void setupCypressBoard();
-	DriverStation *_ds;
+	bool digitalIn(UINT32 pin);
 	
+	DriverStation *_ds;
 };
 
 
