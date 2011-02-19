@@ -52,7 +52,7 @@ public:
 		
 		
 		
-		//_arm = new Arm();
+		_arm = new Arm();
 		
 
 		// Acquire the Driver Station object
