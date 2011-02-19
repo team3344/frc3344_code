@@ -31,9 +31,7 @@ class FRC2011 : public IterativeRobot
 	
 	
 
-#ifdef LOGITECH_CONTROLLER
 	Gamepad *_gamepad;
-#endif
 	
 
 	Joystick *_armJoystick;
@@ -200,9 +198,9 @@ public:
 	void GamepadDrive(Gamepad *gp)
 	{
 		float throttle;
-		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 			throttle = DRIVE_SPEED_HIGH;
-		else if ( _gamepad->GetButton(Gamepad::kLeftTopTrigger) )
+		else if ( gp->GetButton(Gamepad::kLeftTopTrigger) )
 			throttle = DRIVE_SPEED_LOW;
 		else
 			throttle = DRIVE_SPEED_MID;
@@ -260,8 +258,8 @@ public:
 	
 	void TeleopPeriodic(void)
 	{
-		//GamepadDrive(_gamepad);
-		//GamepadArmControl(_gamepad);
+		GamepadDrive(_gamepad);
+		GamepadArmControl(_gamepad);
 		//JoystickArmControl(_armJoystick);
 		
 		LogToDashboard();
