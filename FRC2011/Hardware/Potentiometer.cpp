@@ -2,7 +2,7 @@
 #include "Potentiometer.h"
 
 
-const float POTENTIOMETER_VOLTAGE_READING_RANGE = 10;
+const float POTENTIOMETER_VOLTAGE_READING_RANGE = 5.0;
 
 
 
