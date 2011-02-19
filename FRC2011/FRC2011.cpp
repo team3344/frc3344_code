@@ -5,11 +5,11 @@
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 #include "Controller/Gamepad.h"
-#include "Controller/JBController.h"
+#include "Controller/BeastController.h"
 
 
 #define LOGITECH_CONTROLLER
-#define JB_CONTROLLER
+#define BEAST_CONTROLLER
 
 
 class FRC2011 : public IterativeRobot
@@ -25,8 +25,8 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 
 	
-#ifdef JB_CONTROLLER
-	JBController *_jbController;
+#ifdef BEAST_CONTROLLER
+	BeastController *_beastController;
 #endif
 	
 	
@@ -46,17 +46,9 @@ public:
 		_robotDrive = new RobotDrive(1, 2, 3, 4);
 		
 		
-		//	FIXME: remove this
-		//Victor *v = new Victor(SIDECAR_SLOT, 5);
-		//v->Set(.1);
-		
 		
 		
 		_arm = new Arm();
-		
-		
-		
-		
 		
 		
 		_claw = new Claw(CLAW_RELAY_CHANNEL);
@@ -74,8 +66,8 @@ public:
 #endif
 		
 		
-#ifdef JB_CONTROLLER
-		_jbController = new JBController(_driverStation);
+#ifdef BEAST_CONTROLLER
+		_beastController = new BeastController(_driverStation);
 #endif
 		
 		//	initialize the SmartDashboard
@@ -96,12 +88,6 @@ public:
 	
 	void LogToDashboard()
 	{
-		//	relay ports
-		
-		
-		
-		SmartDashboard::Log("hello world", "try1");
-		
 		SmartDashboard::Log(throttle(), "Throttle");
 		
 		
@@ -121,15 +107,13 @@ public:
 
 		//	arm position
 		
-		//	camera image
-		
 		//	pressure of storage tanks
 		
 		//	
 		
 		
 		
-		_gamepad->logButtons();
+		//_gamepad->logButtons();
 		
 	}
 	
@@ -226,8 +210,9 @@ public:
 		
 		
 		
-		//	arm
 		
+		
+		//	arm - shoulder control w/logitech controller
 		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
 		{
 			_arm->lowerShoulder();
