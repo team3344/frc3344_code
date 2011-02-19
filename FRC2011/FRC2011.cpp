@@ -58,11 +58,11 @@ public:
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
 
-#ifdef LOGITECH_CONTROLLER
-		_gamepad = new Gamepad(1);
-#endif
 		
-		_armJoystick = new Joystick(2);
+		_gamepad = new Gamepad(1);
+
+		
+		//_armJoystick = new Joystick(2);
 		
 #ifdef BEAST_CONTROLLER
 		_beastController = new BeastController(_driverStation);
@@ -108,7 +108,7 @@ public:
 		
 		
 		
-		//_gamepad->logButtons();
+		_gamepad->logButtons();
 		
 	}
 	
@@ -136,6 +136,9 @@ public:
 	{
 		
 	}
+	
+	
+	
 	/*
 	void TeleopInit(void) {
 
@@ -257,8 +260,9 @@ public:
 	
 	void TeleopPeriodic(void)
 	{
-		GamepadDrive(_gamepad);
-		JoystickArmControl(_armJoystick);
+		//GamepadDrive(_gamepad);
+		//GamepadArmControl(_gamepad);
+		//JoystickArmControl(_armJoystick);
 		
 		LogToDashboard();
 	} // TeleopPeriodic(void)
