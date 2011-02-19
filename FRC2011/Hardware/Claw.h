@@ -9,7 +9,7 @@
 
 class Claw {
 public:
-	Claw(UINT32 solenoidChannel);
+	Claw(UINT32 channel);
 	~Claw();
 	
 	//	position
@@ -18,7 +18,7 @@ public:
 	
 	
 private:
-	Solenoid *_solenoid;
+	Relay *_relay;
 };
 
 

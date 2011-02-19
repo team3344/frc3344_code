@@ -52,7 +52,15 @@ public:
 		
 		
 		
-		_arm = new Arm();
+		//_arm = new Arm();
+		
+		
+		
+		
+		
+		
+		_claw = new Claw(CLAW_RELAY_CHANNEL);
+		
 		
 
 		// Acquire the Driver Station object
@@ -217,10 +225,11 @@ public:
 		LogToDashboard();
 		
 		
-		
+		//_arm->raiseShoulder();
 		
 		
 		//	arm
+		/*
 		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
 		{
 			_arm->lowerShoulder();
@@ -228,6 +237,18 @@ public:
 		else if ( _gamepad->GetButton(Gamepad::kTopButton) )
 		{
 			_arm->raiseShoulder();
+		}
+		*/
+		
+		
+		//	claw
+		if ( _gamepad->GetButton(Gamepad::kRightTopTrigger) )
+		{
+			_claw->open();
+		}
+		else
+		{
+			_claw->close();
 		}
 		
 		

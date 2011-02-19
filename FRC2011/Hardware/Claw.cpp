@@ -3,23 +3,23 @@
 #include "../Defines.h"
 
 
-Claw::Claw(UINT32 solenoidChannel)
+Claw::Claw(UINT32 channel)
 {
-	_solenoid = new Solenoid(SOLENOID_BREAKOUT_SLOT, solenoidChannel);
+	_relay = new Relay(SIDECAR_SLOT, channel);
 }
 
 Claw::~Claw()
 {
-	delete _solenoid;
+	delete _relay;
 }
 
 void Claw::open()
 {
-	_solenoid->Set(false);
+	_relay->Set(Relay::kForward);
 }
 
 void Claw::close()
 {
-	_solenoid->Set(true);
+	_relay->Set(Relay::kOff);
 }
 
