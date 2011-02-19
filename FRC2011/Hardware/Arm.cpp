@@ -5,7 +5,9 @@
 
 Arm::Arm()
 {
-	_shoulderSolenoid = new DoubleSolenoid(SHOULDER_SOLENOID_UP_CHANNEL, SHOULDER_SOLENOID_UP_CHANNEL);
+	_shoulderSolenoid = new DoubleSolenoid(SOLENOID_BREAKOUT_SLOT,
+											SHOULDER_SOLENOID_UP_CHANNEL,
+											SHOULDER_SOLENOID_DOWN_CHANNEL);
 
 	_elbowPositionSensor = new Potentiometer(ANALOG_BREAKOUT_SLOT, ELBOW_POT_CHANNEL);
 	//	FIXME: set parameters on the pot

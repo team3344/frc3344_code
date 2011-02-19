@@ -52,7 +52,7 @@ public:
 		
 		
 		
-		//_arm = new Arm();
+		_arm = new Arm();
 		
 		
 		
@@ -225,11 +225,9 @@ public:
 		LogToDashboard();
 		
 		
-		//_arm->raiseShoulder();
-		
 		
 		//	arm
-		/*
+		
 		if ( _gamepad->GetButton(Gamepad::kBottomButton) )
 		{
 			_arm->lowerShoulder();
@@ -238,7 +236,7 @@ public:
 		{
 			_arm->raiseShoulder();
 		}
-		*/
+		
 		
 		
 		//	claw

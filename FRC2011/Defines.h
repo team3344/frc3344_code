@@ -44,7 +44,7 @@ const UINT32 CLAW_RELAY_CHANNEL = 2;
 const UINT32 ELBOW_POT_CHANNEL = 1;
 const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;	//	FIXME: Channel for the victor - connected by Y cable
 
-const float ELBOW_MAX_POWER = .3;	//	FIXME: BRANDON & SHEZ, you may need to increase this!!!!!!!!!!!!
+const float ELBOW_MAX_POWER = .4;
 
 const float ELBOW_PID_P = 1;	//	FIXME: htf do u tune these??
 const float ELBOW_PID_I = 0;
@@ -52,8 +52,8 @@ const float ELBOW_PID_D = 0;
 
 
 
-const UINT32 SHOULDER_SOLENOID_UP_CHANNEL = 2;
-const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 1;
+const UINT32 SHOULDER_SOLENOID_UP_CHANNEL = 2;	//	not 1
+const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 3;
 
 
 
