@@ -10,9 +10,6 @@
 
 class LineController {
 	
-	//	FIXME: CREATE A CONSTRUCTOR!!! - params: lsArray? robot drive???
-	
-	
 	LineController(LightSensorArray *lsArray);
 	~LineController();
 	

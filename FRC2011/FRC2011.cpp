@@ -9,7 +9,18 @@
 
 
 #define LOGITECH_CONTROLLER
-#define BEAST_CONTROLLER
+
+
+
+
+
+
+/*****	Autonomous Power Profiles	*****/
+double forkProfile[] = {.7, .7, .55, .6, .6, .5, .4, 0.0};
+double straightProfile[] = {.65, .6, .6, .6, .35, .35, .35, 0.0};
+
+
+
 
 
 class FRC2011 : public IterativeRobot
@@ -25,17 +36,25 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 
 	
-#ifdef BEAST_CONTROLLER
-	BeastController *_beastController;
-#endif
 	
 	
 
+	/*****	Controllers	*****/
 	Gamepad *_driverGamepad;
 	Gamepad *_armGamepad;
 
+	BeastController *_beastController;
+
 	Joystick *_armJoystick;
 	
+
+
+	/*****	Autonomous	*****/
+	double *powerProfile;
+	bool waitingForFork;
+
+
+
 public:
 
 	FRC2011()
@@ -56,15 +75,14 @@ public:
 		// Acquire the Driver Station object
 		_driverStation = DriverStation::GetInstance();
 
-		
+
+
+		/**********		Init Controllers	**********/
 		_driverGamepad = new Gamepad(1);
 		_armGamepad = new Gamepad(2);
 		
-		//_armJoystick = new Joystick(2);
-		
-#ifdef BEAST_CONTROLLER
 		_beastController = new BeastController(_driverStation);
-#endif
+
 		
 		//	initialize the SmartDashboard
 		SmartDashboard::init();
@@ -84,32 +102,9 @@ public:
 	
 	void LogToDashboard()
 	{
-		
 		_arm->logInfo();
 		
 		_lightSensors->logInfo();
-		
-		
-		
-		//	power sent to motors
-		
-		
-		
-		
-		
-		//	light sensors
-		
-
-		//	arm position
-		
-		//	pressure of storage tanks
-		
-		//	
-		
-		
-		
-		//_gamepad->logButtons();
-		
 	}
 	
 	
@@ -132,20 +127,66 @@ public:
 		printf("\x1b[2B");
 	}*/
 	
-	void AutonomousInit(void)
-	{
-		
-	}
 	
 	
 	
+
 	/*
 	void TeleopInit(void) {
 
 	}*/
 
-	/********************************** Periodic Routines *************************************/
-	
+	/********************************** Autonomous *************************************/
+
+	void AutonomousInit(void)
+	{
+		AutonomousPosition pos = _beastController->autonomousPosition();	//	see where we're starting
+		_arm->raiseShoulder();
+
+		powerProfile = ( pos | kStraightAutonomous ) ? straightProfile : forkProfile;
+	}
+
+	void Autonomous()
+	{
+		float speed;	//	= powerProfile[currentTime];
+
+		//	FIXME: learn how to use Task objects - that's what we need for the autonomous code
+
+		//	following
+
+
+		//	if forked, watch for fork
+
+		//	watch for t
+
+		//	stop
+
+
+
+	}
+
+
+	bool LineThick()
+	{
+		return _lsArray->state() == LightSensorArray::kLeftOn | LightSensorArray::kMidOn | LightSensorArray::kRightOn;	//	all sensors are on
+	}
+
+
+	void AutonomousPeriodic(void)
+	{
+
+
+
+
+
+
+
+
+		LogToDashboard();
+	}
+
+
+
 	void DisabledPeriodic(void)
 	{
 		static INT32 printSec = (INT32)GetClock() + 1;
@@ -161,13 +202,6 @@ public:
 		}
 	}
 
-	void AutonomousPeriodic(void) {
-		
-		LogToDashboard();
-	}
-	
-	
-	
 	
 	
 	/***************	TeleOp		***************/
