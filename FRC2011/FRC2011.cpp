@@ -50,8 +50,8 @@ class FRC2011 : public IterativeRobot
 
 
 	/*****	Autonomous	*****/
-	double *powerProfile;
-	bool waitingForFork;
+
+	Task _autonomousTask;
 
 
 
@@ -138,37 +138,45 @@ public:
 
 	/********************************** Autonomous *************************************/
 
-	void AutonomousInit(void)
+	int AutonomousTask()
 	{
 		AutonomousPosition pos = _beastController->autonomousPosition();	//	see where we're starting
 		_arm->raiseShoulder();
 
-		powerProfile = ( pos | kStraightAutonomous ) ? straightProfile : forkProfile;
+		double *powerProfile = ( pos | kStraightAutonomous ) ? straightProfile : forkProfile;
+		
+		
+		
+		if ( pos | kForkedAutonomous )
+		{
+			//	look for fork
+		}
+		
+		//	look for T
+		
+		
+		
+		
+		
+
+
+
+
 	}
 
-	void Autonomous()
+	
+
+	void AutonomousInit(void)
 	{
-		float speed;	//	= powerProfile[currentTime];
-
-		//	FIXME: learn how to use Task objects - that's what we need for the autonomous code
-
-		//	following
-
-
-		//	if forked, watch for fork
-
-		//	watch for t
-
-		//	stop
-
-
-
+		//	_autonomousTask("Autonomous", AutonomousTask());
+		//	start task
 	}
 
+	
 
 	bool LineThick()
 	{
-		return _lsArray->state() == LightSensorArray::kLeftOn | LightSensorArray::kMidOn | LightSensorArray::kRightOn;	//	all sensors are on
+		return ( _lightSensors->state() == LightSensorArray::kLeftOn | LightSensorArray::kMidOn | LightSensorArray::kRightOn );	//	all sensors are on
 	}
 
 
