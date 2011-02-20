@@ -404,6 +404,7 @@ public:
 	
 	void GamepadArmControl(Gamepad *gp)
 	{
+		
 		//	arm shoulder control
 		if ( gp->GetButton(Gamepad::kBottomButton) )
 			_arm->lowerShoulder();
@@ -412,15 +413,8 @@ public:
 		
 		
 		
-		//	claw control w/top right trigger
-		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
-			_claw->open();
-		else
-			_claw->close();
+		/*
 		
-		
-		
-		/*	TEMPORARY ELBOW STUFF	*/
 		Gamepad::DPadDirection dPad = gp->GetDPad();
 		
 		if ( dPad == Gamepad::kUp )
@@ -429,7 +423,30 @@ public:
 			_arm->_elbowController->Set(-ELBOW_MAX_POWER);	//	down
 		else
 			_arm->_elbowController->Set(0);	//	turn it off
-		/*	TEMPORARY ELBOW STUFF	*/
+		*/
+		
+		
+		//	claw control w/top right trigger
+		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
+			_claw->open();
+		else
+			_claw->close();
+		
+		/*
+		//	shoulder - right joystick
+		if ( gp->GetRightY() > .5 )
+		{
+			_arm->lowerShoulder();
+		}
+		else if ( gp->GetRightY() < -.5 )
+		{
+			_arm->raiseShoulder();
+		}*/
+		
+		
+		//	elbow - left joystick
+		double elbowPower = gp->GetLeftY() * -ELBOW_MAX_POWER;
+		_arm->_elbowController->Set(elbowPower);
 	}
 	
 	
