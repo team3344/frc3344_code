@@ -21,6 +21,11 @@ public:
 	
 	LightSensorState state();
 	
+	bool left();
+	bool mid();
+	bool right();
+	
+	
 	void logInfo();
 	
 	

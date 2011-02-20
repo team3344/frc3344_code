@@ -15,6 +15,21 @@ LightSensorArray::~LightSensorArray()
 	delete _right;
 }
 
+bool LightSensorArray::left()
+{
+	return _left->Get() == 0;
+}
+
+bool LightSensorArray::mid()
+{
+	return _mid->Get() == 0;
+}
+bool LightSensorArray::right()
+{
+	return _right->Get() == 0;
+}
+	
+
 
 void LightSensorArray::logInfo()
 {
