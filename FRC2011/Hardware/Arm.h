@@ -49,7 +49,6 @@ public:
 	~Arm();
 	
 	
-	
 	void logInfo();
 	
 	
@@ -71,6 +70,8 @@ public:
 
 	
 	void setElbowAngle(float angle);
+	bool positionOutOfRangeForElbow(float position);
+	float restrictedElbowPosition(float position);
 	//void setAbsoluteElbowAngle(float absAngle);
 
 	Victor *_elbowController;
@@ -85,6 +86,8 @@ private:
 	PIDController *_elbowPIDController;
 	
 	
+	
+	
 	/*
 	 * 	tracks whether or not the arm should try to
 	 *	get to the elbow & shoulder targets.
@@ -94,13 +97,7 @@ private:
 	
 	
 	//	angles where we want the elbow and shoulder to be
-	double _elbowTarget, _shoulderTarget;
-
-
-	//	FIXME: is this necessary??? what if we just limit the joint targets???
-	//Task *_armProtector;	//	watches joints and shuts them off if they try to over-extend
-	//void InitArmProtector();
-	//void protectArm();
+	double _elbowTarget, _shoulderTarget;	
 };
 
 

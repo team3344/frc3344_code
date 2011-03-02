@@ -13,13 +13,9 @@
 
 
 
-
-
 /*****	Autonomous Power Profiles	*****/
-double forkProfile[] = {.7, .7, .55, .6, .6, .5, .4, 0.0};
-double straightProfile[] = {.65, .6, .6, .6, .35, .35, .35, 0.0};
-
-
+//double forkProfile[] = {.7, .7, .55, .6, .6, .5, .4, 0.0};
+//double straightProfile[] = {.65, .6, .6, .6, .35, .35, .35, 0.0};
 
 
 

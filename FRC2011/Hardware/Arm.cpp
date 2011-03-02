@@ -103,6 +103,24 @@ void Arm::setElbowAngle(float angle)
 }
 
 
+
+bool Arm::positionOutOfRangeForElbow(float position)
+{
+	return position > ELBOW_MAX_ANGLE || position < ELBOW_MIN_ANGLE;
+}
+
+float Arm::restrictedElbowPosition(float position)
+{
+	if ( position > ELBOW_MAX_ANGLE )
+		return ELBOW_MAX_ANGLE;
+	else if ( position < ELBOW_MIN_ANGLE )
+		return ELBOW_MIN_ANGLE;
+	else
+		return position;
+}
+
+
+
 /*
 /*	Arm protection - keeps joints from over-extending	*/
 /*
