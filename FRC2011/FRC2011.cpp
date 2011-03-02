@@ -32,7 +32,7 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 
 	
-	
+	Servo *_servo;
 	
 
 	/*****	Controllers	*****/
@@ -65,6 +65,12 @@ public:
 		
 		
 		_claw = new Claw(CLAW_RELAY_CHANNEL);
+
+
+		
+		_servo = new Servo(SIDECAR_SLOT, 6);
+		_servo->Set(255);
+		
 		
 		
 
