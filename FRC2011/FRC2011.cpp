@@ -27,7 +27,7 @@ class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive?
 	Arm *_arm;
-	Claw *_claw;
+	RollerGrip *_rollerGrip;
 	
 	LightSensorArray *_lightSensors;
 
@@ -68,8 +68,7 @@ public:
 		_arm = new Arm();
 		
 		
-		_claw = new Claw(CLAW_RELAY_CHANNEL);
-		
+		_rollerGrip = new RollerGrip(1, 2, 3, 4);	//	FIXME: these are the wrong channels
 		
 
 		// Acquire the Driver Station object
