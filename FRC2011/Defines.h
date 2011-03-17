@@ -41,7 +41,8 @@ const UINT32 CLAW_RELAY_CHANNEL = 2;
 const UINT32 ELBOW_POT_CHANNEL = 2;
 const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;
 
-const float ELBOW_MAX_POWER = .4;
+const float ELBOW_MAX_POWER = .5;
+const float ELBOW_MIN_POWER = .05;
 
 const float ELBOW_PID_P = 1;	//	FIXME: htf do u tune these??
 const float ELBOW_PID_I = 0;

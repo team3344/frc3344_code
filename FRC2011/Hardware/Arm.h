@@ -57,6 +57,8 @@ public:
 	float elbowAngle();			//	0 is fully extended.  relative to "backarm"
 	float absoluteElbowAngle();	//	relative to ground.  0 is horizontal
 	
+	double recommendedElbowPowerForDirection(int direction);	//	direction is +/-1
+	
 	
 	//	shoulder adjustment
 	//void holdShoulder();

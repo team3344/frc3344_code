@@ -40,7 +40,10 @@ void Arm::logInfo()
 
 float Arm::shoulderAngle()
 {
-	return 1;	//	FIXME: ;asdkfj;asdjf;sdjkf
+	if ( _shoulderSolenoid->Get() == DoubleSolenoid::kForward )
+		return SHOULDER_MAX_ANGLE;
+	else
+		return SHOULDER_MIN_ANGLE;
 }
 
 float Arm::elbowAngle()
@@ -102,6 +105,13 @@ void Arm::setElbowAngle(float angle)
 	_elbowPIDController->SetSetpoint(_elbowTarget);
 }
 
+double Arm::recommendedElbowPowerForDirection(int direction)
+{
+	double multiplier = ELBOW_MAX_POWER - ELBOW_MIN_POWER;
+	double upPower = ELBOW_MIN_POWER + (ELBOW_MAX_POWER * cos(absoluteElbowAngle()));
+	
+	return ( direction == 1 ) ? upPower : ELBOW_MAX_POWER - upPower;
+}
 
 
 bool Arm::positionOutOfRangeForElbow(float position)

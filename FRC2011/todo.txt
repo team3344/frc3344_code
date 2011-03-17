@@ -1,6 +1,6 @@
 
 /*****	Software	*****/
-* elbow control
+* elbow control - test position setting & speed control
 * line following
 * autonomous
 * test minibot deployment

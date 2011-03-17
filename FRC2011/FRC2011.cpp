@@ -306,7 +306,11 @@ public:
 		
 		
 		//	elbow - left joystick
-		double elbowPower = gp->GetLeftY() * -ELBOW_MAX_POWER;
+		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
+		
+		SmartDashboard::Log(stick, "Elbow Control Stick");
+		
+		double elbowPower = stick * -_arm->recommendedElbowPowerForDirection(SIGN(stick));
 		_arm->_elbowController->Set(elbowPower);
 	}
 	
