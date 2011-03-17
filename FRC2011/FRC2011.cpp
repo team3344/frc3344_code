@@ -1,7 +1,7 @@
 
 #include "wpilib.h"
 #include "Hardware/Arm.h"
-#include "Hardware/Claw.h"
+#include "Hardware/RollerGrip.h"
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 #include "Controller/Gamepad.h"
@@ -23,7 +23,7 @@ class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive?
 	Arm *_arm;
-	Claw *_claw;
+	RollerGrip *_rollerGrip;
 	
 	LightSensorArray *_lightSensors;
 
@@ -64,8 +64,7 @@ public:
 		_arm = new Arm();
 		
 		
-		_claw = new Claw(CLAW_RELAY_CHANNEL);
-		
+		_rollerGrip = new RollerGrip(1, 2, 3, 4);	//	FIXME: these are the wrong channels
 		
 
 		// Acquire the Driver Station object
@@ -345,6 +344,7 @@ public:
 	
 	/***************	TeleOp		***************/
 	
+	/*
 	void JoystickArmControl(Joystick *j)
 	{
 		//	elbow control w/y-axis of joystick
@@ -366,6 +366,7 @@ public:
 			_claw->close();
 		}
 	}
+	*/
 	
 	
 	
@@ -385,6 +386,7 @@ public:
 	}
 	
 	
+	/*
 	//	arcade drive w/a joystick
 	void JoystickDrive(Joystick *j)
 	{
@@ -396,7 +398,7 @@ public:
 		_robotDrive->SetMaxOutput(throttle);
 		_robotDrive->ArcadeDrive(j);
 	}
-	
+	*/
 	
 	void GamepadArmControl(Gamepad *gp)
 	{
@@ -409,25 +411,49 @@ public:
 		
 		
 		
-		/*
+		//	FIXME: implement the following!!!
 		
-		Gamepad::DPadDirection dPad = gp->GetDPad();
-		
-		if ( dPad == Gamepad::kUp )
-			_arm->_elbowController->Set(ELBOW_MAX_POWER);	//	up
-		else if ( dPad == Gamepad::kDown )
-			_arm->_elbowController->Set(-ELBOW_MAX_POWER);	//	down
+		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
+		{
+			
+		}
+		else if ( gp->GetButton(Gamepad::kRightBottomTrigger) )
+		{
+			
+		}
+		else if ( gp->GetButton(Gamepad::kLeftTopTrigger) )
+		{
+			
+		}
+		else if ( gp->GetButton(Gamepad::kLeftBottomTrigger) )
+		{
+			
+		}
 		else
-			_arm->_elbowController->Set(0);	//	turn it off
-		*/
+		{
+			_rollerGrip
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		//	claw control w/top right trigger
+		/*
 		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 			_claw->open();
 		else
 			_claw->close();
-		
+		*/
 		/*
 		//	shoulder - right joystick
 		if ( gp->GetRightY() > .5 )
