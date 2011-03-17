@@ -7,6 +7,8 @@
 #include <math.h>
 
 
+#define SIGN(x) ( (x < 0) ? -1 : 1 )
+
 const double PI = 3.14159265358979323846;
 
 

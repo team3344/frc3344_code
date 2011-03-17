@@ -108,7 +108,7 @@ void Arm::setElbowAngle(float angle)
 double Arm::recommendedElbowPowerForDirection(int direction)
 {
 	double multiplier = ELBOW_MAX_POWER - ELBOW_MIN_POWER;
-	double upPower = ELBOW_MIN_POWER + (ELBOW_MAX_POWER * cos(absoluteElbowAngle()));
+	double upPower = ELBOW_MIN_POWER + (multiplier * cos(absoluteElbowAngle()));
 	
 	return ( direction == 1 ) ? upPower : ELBOW_MAX_POWER - upPower;
 }
@@ -132,7 +132,7 @@ float Arm::restrictedElbowPosition(float position)
 
 
 /*
-/*	Arm protection - keeps joints from over-extending	*/
+ *	Arm protection - keeps joints from over-extending	*/
 /*
 void Arm::protectArm()
 {
