@@ -54,6 +54,13 @@ const UINT32 SHOULDER_SOLENOID_DOWN_CHANNEL = 3;
 
 
 
+//	FIXME: the below 2 are wrong !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const UINT32 MINIBOT_IN_SOLENOID = 5;
+const UINT32 MINIBOT_OUT_SOLENOID = 6;
+
+
+
+
 #endif //	DEFINES_H
 
 

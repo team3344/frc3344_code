@@ -32,6 +32,7 @@ class FRC2011 : public IterativeRobot
 	Compressor *_compressor;
 
 	
+	DoubleSolenoid *_minibotDeployerSolenoid;
 	
 	
 
@@ -59,6 +60,8 @@ public:
 		_robotDrive = new RobotDrive(1, 2, 3, 4);
 		
 		
+		
+		_minibotDeployerSolenoid = new DoubleSolenoid(SOLENOID_BREAKOUT_SLOT, MINIBOT_IN_SOLENOID, MINIBOT_OUT_SOLENOID);
 		
 		
 		_arm = new Arm();
@@ -258,11 +261,11 @@ public:
 		
 		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 		{
-			_rollerGrip->intake();
+			_rollerGrip->release();
 		}
 		else if ( gp->GetButton(Gamepad::kRightBottomTrigger) )
 		{
-			_rollerGrip->release();
+			_rollerGrip->intake();
 		}
 		else if ( gp->GetButton(Gamepad::kLeftTopTrigger) )
 		{
@@ -312,13 +315,27 @@ public:
 	
 	void TeleopPeriodic(void)
 	{
-		GamepadDrive(_driverGamepad);
-		GamepadArmControl(_armGamepad);
-		//JoystickArmControl(_armJoystick);
+		if ( _driverStation->IsNewControlData())
+		{
+			GamepadDrive(_driverGamepad);
+			GamepadArmControl(_armGamepad);
+			
+			
+			//	minibot deployment
+			if ( _beastController->minibotDeployed())
+			{
+				_minibotDeployerSolenoid->Set(DoubleSolenoid::kForward);
+			}
+			else
+			{
+				_minibotDeployerSolenoid->Set(DoubleSolenoid::kReverse);
+			}
+			
+		}
+		
 		
 		LogToDashboard();
-	} // TeleopPeriodic(void)
-	
+	}
 	
 };
 
