@@ -82,6 +82,8 @@ AutonomousPosition BeastController::autonomousPosition()
 	{
 		pos |= kStraightAutonomous;
 	}
+	
+	return pos;
 }
 
 

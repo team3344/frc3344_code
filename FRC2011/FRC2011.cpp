@@ -147,7 +147,8 @@ public:
 		//	start task
 		
 		
-		AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
+		//	FIXME: uncomment this to try autonomous
+		//AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
 	}
 
 	
@@ -277,7 +278,7 @@ public:
 		}
 		else
 		{
-			_rollerGrip->intake();
+			_rollerGrip->disable();
 			//	_rollerGrip->disable();
 		}
 		
@@ -306,12 +307,18 @@ public:
 		
 		
 		//	elbow - left joystick
+		/*
 		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
-		
 		SmartDashboard::Log(stick, "Elbow Control Stick");
-		
 		double elbowPower = stick * -_arm->recommendedElbowPowerForDirection(SIGN(stick));
 		_arm->_elbowController->Set(elbowPower);
+		*/
+		
+		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
+		SmartDashboard::Log(stick, "Elbow Control Stick");
+		double elbowPower = stick * ELBOW_MAX_POWER;
+		_arm->_elbowController->Set(elbowPower);
+		
 	}
 	
 	
@@ -319,8 +326,8 @@ public:
 	
 	void TeleopPeriodic(void)
 	{
-		if ( _driverStation->IsNewControlData())
-		{
+		//if ( _driverStation->IsNewControlData() )
+		//{
 			GamepadDrive(_driverGamepad);
 			GamepadArmControl(_armGamepad);
 			
@@ -328,8 +335,8 @@ public:
 			//	minibot deployment
 			if ( _beastController->minibotDeployed() )
 			{
-				_arm->raiseShoulder();
-				Wait(1);	//	FIXME: is this necessary???????????
+				//_arm->raiseShoulder();
+				//Wait(1);	//	FIXME: is this necessary???????????
 				_minibotDeployerSolenoid->Set(DoubleSolenoid::kForward);
 			}
 			else
@@ -337,7 +344,7 @@ public:
 				_minibotDeployerSolenoid->Set(DoubleSolenoid::kReverse);
 			}
 			
-		}
+		//}
 		
 		
 		LogToDashboard();

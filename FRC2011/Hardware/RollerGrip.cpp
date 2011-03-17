@@ -20,12 +20,12 @@ RollerGrip::~RollerGrip()
 	delete bottomRight;
 }
 		
-		
-		
+
+
 void RollerGrip::setTopRollerDirection(RollerDirection d)
 {
-	topLeft->SetAngle(d);
-	topRight->SetAngle(SERVO_MAX_ANGLE - d);
+	topLeft->SetAngle(SERVO_MAX_ANGLE - d);
+	topRight->SetAngle(d);
 }
 
 void RollerGrip::setBottomRollerDirection(RollerDirection d)
