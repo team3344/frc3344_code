@@ -1,39 +1,13 @@
 
-/*****	Hardware	*****/
-* fix pneumatic leaks
-* route tubing
-* minibot deployment
-* potentiometer
-
-
 /*****	Software	*****/
-* fix issue with DoubleSolenoid not reversing
 * elbow control
 * line following
 * autonomous
-* make sure DPad works on
-
-
-/*****	Controls	*****/
-* flip-cover toggle switch
-* 2-state toggle
-* 3-state toggle
-* e-stop?
-* potentiometer
-* switch
-* board?
-* project enclosure?
-
-
-
-
-/*****	Importante!	*****/
-* e-stop button
-* I-channel
-* aluminium strip
-* laptop
-
-
+* test minibot deployment
+* measure & #define angles for arm
+* calibrate & test pot
+* test roller grip controls & get directions right
+* make sure arm is out of way when deploying minibot???
 
 
 
