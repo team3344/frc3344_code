@@ -256,36 +256,27 @@ public:
 		
 		
 		
-		//	FIXME: implement the following!!!
-		
 		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 		{
-			
+			_rollerGrip->intake();
 		}
 		else if ( gp->GetButton(Gamepad::kRightBottomTrigger) )
 		{
-			
+			_rollerGrip->release();
 		}
 		else if ( gp->GetButton(Gamepad::kLeftTopTrigger) )
 		{
-			
+			_rollerGrip->rotateUp();
 		}
 		else if ( gp->GetButton(Gamepad::kLeftBottomTrigger) )
 		{
-			
+			_rollerGrip->rotateDown();
 		}
 		else
 		{
-			//_rollerGrip
+			_rollerGrip->intake();
+			//	_rollerGrip->disable();
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
