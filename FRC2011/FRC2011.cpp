@@ -67,7 +67,7 @@ public:
 		_arm = new Arm();
 		
 		
-		_rollerGrip = new RollerGrip(1, 2, 3, 4);	//	FIXME: these are the wrong channels
+		_rollerGrip = new RollerGrip(7, 8, 9, 100);
 		
 
 		// Acquire the Driver Station object
@@ -328,6 +328,8 @@ public:
 			//	minibot deployment
 			if ( _beastController->minibotDeployed())
 			{
+				_arm->raiseShoulder();
+				Wait(1);	//	FIXME: is this necessary???????????
 				_minibotDeployerSolenoid->Set(DoubleSolenoid::kForward);
 			}
 			else
