@@ -13,18 +13,19 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-<pathentry kind="src" path=""/>
-<pathentry kind="out" path=""/>
-<pathentry kind="con" path="com.windriver.ide.core.WR_CONTAINER"/>
-<pathentry kind="con" path="com.windriver.ide.core.build.model.WR_USERDEFINED_CONTAINER"/>
-</storageModule>
+
 <storageModule moduleId="scannerConfiguration"/>
 <storageModule moduleId="userdefinedContainer">
 <indexAllFiles value="false"/>
 <initialized value="true"/>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+<pathentry excluding="*Autonomous.cpp" kind="src" path=""/>
+<pathentry kind="out" path=""/>
+<pathentry kind="con" path="com.windriver.ide.core.WR_CONTAINER"/>
+<pathentry kind="con" path="com.windriver.ide.core.build.model.WR_USERDEFINED_CONTAINER"/>
+</storageModule>
 </cconfiguration>
 </storageModule>
 </cproject>

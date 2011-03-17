@@ -3,13 +3,13 @@
 #define POTENTIOMETER_H
 
 #include "wpilib.h"
-#include "Derivatizer.h"
+#include "../Derivatizer.h"
 
 
 class Potentiometer : public PIDSource {	//	FIXME: implement SensorBase stuff?!?
 public:
 	Potentiometer(UINT32 slot, UINT32 channel);
-	~Potentiometer();
+	 virtual ~Potentiometer();
 	
 	
 	void calibrate(float voltage1, float position1, float voltage2, float position2);

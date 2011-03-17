@@ -12,7 +12,7 @@ Potentiometer::Potentiometer(UINT32 slot, UINT32 channel)
 	_derivatizer = new Derivatizer();
 }
 
-Potentiometer::~Potentiometer()
+virtual Potentiometer::~Potentiometer()
 {
 	delete _analogChannel;
 }
