@@ -67,7 +67,7 @@ public:
 		_arm = new Arm();
 		
 		
-		_rollerGrip = new RollerGrip(7, 8, 9, 100);
+		_rollerGrip = new RollerGrip(7, 8, 9, 10);
 		
 
 		// Acquire the Driver Station object
@@ -326,7 +326,7 @@ public:
 			
 			
 			//	minibot deployment
-			if ( _beastController->minibotDeployed())
+			if ( _beastController->minibotDeployed() )
 			{
 				_arm->raiseShoulder();
 				Wait(1);	//	FIXME: is this necessary???????????
