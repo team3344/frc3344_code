@@ -12,7 +12,7 @@ Potentiometer::Potentiometer(UINT32 slot, UINT32 channel)
 	_derivatizer = new Derivatizer();
 }
 
-virtual Potentiometer::~Potentiometer()
+Potentiometer::~Potentiometer()
 {
 	delete _analogChannel;
 }
@@ -35,7 +35,7 @@ double Potentiometer::currentPosition()
 
 double Potentiometer::currentVelocity()
 {
-	
+	return _derivatizer->firstDerivative();
 }
 
 double Potentiometer::currentVoltage()
@@ -47,7 +47,7 @@ double Potentiometer::currentVoltage()
 //	PID Source
 double Potentiometer::PIDGet()
 {
-	update(currentPosition);
+	update();
 	
 	if ( pidControlType == Potentiometer::kPosition )
 		return currentPosition();

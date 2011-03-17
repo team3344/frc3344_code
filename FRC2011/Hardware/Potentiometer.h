@@ -12,7 +12,7 @@ public:
 	 virtual ~Potentiometer();
 	
 	
-	void calibrate(float voltage1, float position1, float voltage2, float position2);
+	void calibrate(double voltage1, double position1, double voltage2, double position2);
 	void update();	//	tells it to calculate derivatives
 	
 	double currentVoltage();
