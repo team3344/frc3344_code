@@ -24,15 +24,6 @@ float LineController::speed()
 }
 
 
-float LineController::calculateTurn()
-{
-	//	FIXME: implement
-	
-	
-	
-}
-
-
 bool LineController::followingLine()
 {
 	return false;	//	FIXME: implement!!! look at running Task?
