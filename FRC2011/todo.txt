@@ -1,13 +1,9 @@
 
 /*****	Software	*****/
 * elbow control - test position setting & speed control
-* line following
 * autonomous
-* test minibot deployment
 * measure & #define angles for arm
 * calibrate & test pot
-* test roller grip controls & get directions right
-* make sure arm is out of way when deploying minibot???
 
 
 

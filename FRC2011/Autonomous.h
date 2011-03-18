@@ -16,7 +16,8 @@ int AutonomousTask()
 		
 		AutonomousPosition pos = _beastController->autonomousPosition();
 		
-		double defaultSteeringGain = .65;	// default value for steering gain - was .65
+		//	NOTE: previous value of steering gain was .65
+		double defaultSteeringGain = .5;	// default value for steering gain - was .65
 
 		int binaryValue;
 		int previousValue = 0;
@@ -28,7 +29,7 @@ int AutonomousTask()
 		double forkProfile[] = {0.70, 0.70, .70, .55, 0.60, 0.60, 0.50, 0.40, 0.0};
 		//double straightProfile[] = {.8, 0.8, .8, 0.7, .7, .7, .6, 0.60, .5, 0.35, 0.35, 0.35, 0.0};
 
-		double straightProfile[] = {.6, 0.65, .6, 0.6, .4, .4, .4, 0.4, .35, 0.35, 0.3, 0.35, 0.0};
+		double straightProfile[] = {.7, 0.7, .65, 0.65, .5, .4, .4, 0.4, .35, 0.35, 0.3, 0.35, 0.0};
 
 		
 		

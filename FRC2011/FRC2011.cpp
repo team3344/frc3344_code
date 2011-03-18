@@ -147,17 +147,10 @@ public:
 		//	start task
 		
 		
-		//	FIXME: uncomment this to try autonomous
-		//AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
+		AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
 	}
 
 	
-
-	bool LineThick()
-	{
-		return ( _lightSensors->state() == LightSensorArray::kLeftOn | LightSensorArray::kMidOn | LightSensorArray::kRightOn );	//	all sensors are on
-	}
-
 
 	void AutonomousPeriodic(void)
 	{
