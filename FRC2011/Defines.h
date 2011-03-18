@@ -43,7 +43,7 @@ const UINT32 COMPRESSOR_RELAY_CHANNEL = 1;
 const UINT32 ELBOW_POT_CHANNEL = 7;
 const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;
 
-const float ELBOW_MAX_POWER = .5;
+const float ELBOW_MAX_POWER = .59;
 const float ELBOW_MIN_POWER = .05;
 
 const float ELBOW_PID_P = 1;	//	FIXME: htf do u tune these??

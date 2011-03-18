@@ -146,8 +146,8 @@ public:
 		//	_autonomousTask("Autonomous", AutonomousTask());
 		//	start task
 		
-		
-		AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
+		//	FIXME: uncomment below line to re-enable autonomous
+		//AutonomousTask();	//	FIXME: do this with a wpi task, not a direct call!!!!!!!!!!!
 	}
 
 	
@@ -309,7 +309,7 @@ public:
 		
 		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
 		SmartDashboard::Log(stick, "Elbow Control Stick");
-		double elbowPower = stick * ELBOW_MAX_POWER;
+		double elbowPower = stick * -ELBOW_MAX_POWER;
 		_arm->_elbowController->Set(elbowPower);
 		
 	}
