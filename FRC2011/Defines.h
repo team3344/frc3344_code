@@ -12,6 +12,10 @@
 const double PI = 3.14159265358979323846;
 
 
+//	time after teleop starts that you have to wait before deploying
+const double MINIBOT_DEPLOYMENT_WAIT_TIME = 110;
+
+
 
 const UINT32 SOLENOID_BREAKOUT_SLOT = 8;
 const UINT32 ANALOG_BREAKOUT_SLOT = 1;

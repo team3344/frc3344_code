@@ -8,14 +8,6 @@
 #include "Controller/BeastController.h"
 
 
-#define LOGITECH_CONTROLLER
-
-
-
-
-/*****	Autonomous Power Profiles	*****/
-//double forkProfile[] = {.7, .7, .55, .6, .6, .5, .4, 0.0};
-//double straightProfile[] = {.65, .6, .6, .6, .35, .35, .35, 0.0};
 
 
 
@@ -30,6 +22,8 @@ class FRC2011 : public IterativeRobot
 	DriverStation *_driverStation;
 	
 	Compressor *_compressor;
+	
+	double _teleopStartTime;
 
 	
 	DoubleSolenoid *_minibotDeployerSolenoid;
@@ -131,10 +125,6 @@ public:
 	
 	
 
-	/*
-	void TeleopInit(void) {
-
-	}*/
 
 	/********************************** Autonomous *************************************/
 
@@ -309,6 +299,15 @@ public:
 	
 	
 	
+	void TeleopInit(void)
+	{
+		_teleopStartTime = GetTime();
+	}
+	
+	bool IsMinibotDeploymentPeriod()
+	{
+		return (GetTime() - _teleopStartTime) > MINIBOT_DEPLOYMENT_WAIT_TIME;
+	}
 	
 	void TeleopPeriodic(void)
 	{
@@ -319,7 +318,7 @@ public:
 			
 			
 			//	minibot deployment
-			if ( _beastController->minibotDeployed() )
+			if ( _beastController->minibotDeployed() && IsMinibotDeploymentPeriod() )
 			{
 				//_arm->raiseShoulder();
 				//Wait(1);	//	FIXME: is this necessary???????????
