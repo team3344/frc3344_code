@@ -1,7 +1,7 @@
 
 #include "wpilib.h"
 #include "Hardware/Arm.h"
-#include "Hardware/RollerGrip.h"
+#include "Hardware/Claw.h"
 #include "Hardware/LightSensorArray.h"
 #include "Defines.h"
 #include "Controller/Gamepad.h"
@@ -23,8 +23,8 @@ class FRC2011 : public IterativeRobot
 {
 	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive?
 	Arm *_arm;
-	RollerGrip *_rollerGrip;
-	
+	//RollerGrip *_rollerGrip;
+	Claw *_claw;
 	LightSensorArray *_lightSensors;
 
 	DriverStation *_driverStation;
@@ -61,13 +61,15 @@ public:
 		
 		
 		
+		_claw = new Claw(CLAW_RELAY_CHANNEL);
+		
 		_minibotDeployerSolenoid = new DoubleSolenoid(SOLENOID_BREAKOUT_SLOT, MINIBOT_IN_SOLENOID, MINIBOT_OUT_SOLENOID);
 		
 		
 		_arm = new Arm();
 		
 		
-		_rollerGrip = new RollerGrip(7, 8, 9, 10);
+		//_rollerGrip = new RollerGrip(7, 8, 9, 10);
 		
 
 		// Acquire the Driver Station object
@@ -198,15 +200,7 @@ public:
 		
 		
 		
-		//	claw open/close
-		if ( j->GetTrigger() )
-		{
-			_claw->open();
-		}
-		else
-		{
-			_claw->close();
-		}
+		
 	}
 	*/
 	
@@ -244,7 +238,6 @@ public:
 	
 	void GamepadArmControl(Gamepad *gp)
 	{
-		
 		//	arm shoulder control
 		if ( gp->GetButton(Gamepad::kBottomButton) )
 			_arm->lowerShoulder();
@@ -252,7 +245,7 @@ public:
 			_arm->raiseShoulder();
 		
 		
-		
+		/*
 		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 		{
 			_rollerGrip->release();
@@ -274,19 +267,19 @@ public:
 			_rollerGrip->disable();
 			//	_rollerGrip->disable();
 		}
-		
+		*/
 		
 		
 		
 		
 		
 		//	claw control w/top right trigger
-		/*
+		
 		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
 			_claw->open();
 		else
 			_claw->close();
-		*/
+		
 		/*
 		//	shoulder - right joystick
 		if ( gp->GetRightY() > .5 )
