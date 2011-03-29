@@ -13,9 +13,8 @@
 
 class FRC2011 : public IterativeRobot
 {
-	RobotDrive *_robotDrive;	//	FIXME: make this a SafeDrive?
+	RobotDrive *_robotDrive;
 	Arm *_arm;
-	//RollerGrip *_rollerGrip;
 	Claw *_claw;
 	LightSensorArray *_lightSensors;
 
@@ -70,6 +69,8 @@ public:
 		_driverStation = DriverStation::GetInstance();
 
 
+		_teleopStartTime = 10000000.0;	//	ridiculously huge number
+		
 
 		/**********		Init Controllers	**********/
 		_driverGamepad = new Gamepad(1);
@@ -83,7 +84,7 @@ public:
 
 
 		//	initialize the light sensor array
-		_lightSensors = new LightSensorArray(LIGHT_SENSOR_LEFT_PORT, LIGHT_SENSOR_MID_PORT, LIGHT_SENSOR_RIGHT_PORT);	//	FIXME: is this the right syntax for a static object???
+		_lightSensors = new LightSensorArray(LIGHT_SENSOR_LEFT_PORT, LIGHT_SENSOR_MID_PORT, LIGHT_SENSOR_RIGHT_PORT);
 		
 
 		//	init and start compressor
@@ -107,11 +108,7 @@ public:
 	/********************************** Init Routines *************************************/
 
 	void RobotInit(void) {
-		// Actions which would be performed once (and only once) upon initialization of the
-		// robot would be put here.
 		
-		//	FIXME: calibrate stuff???
-
 		printf("RobotInit() completed.\n");
 	}
 	
@@ -184,13 +181,7 @@ public:
 		//	elbow control w/y-axis of joystick
 		_arm->_elbowController->Set( -(j->GetY()) );
 		
-		
-		
 		//	FIXME: add stuff for shoulder
-		
-		
-		
-		
 	}
 	*/
 	

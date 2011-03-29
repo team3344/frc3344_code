@@ -6,22 +6,19 @@
 BeastController::BeastController(DriverStation *ds)
 {
 	_ds = ds;
-	setupCypressBoard();
+	//setupCypressBoard();
 }
 
+/*
 void BeastController::setupCypressBoard()
 {
-	//enum tDigitalConfig {kUnknown, kInputFloating, kInputPullUp
-	//	kInputPullDown, kOutput, kPWM, kAnalogComparator};
-	//void SetDigitalConfig(UINT32 channel, tDigitalConfig config);
-	
 	//	set all digital input pins to pull-down
 	for ( UINT16 i = 1; i < 8; i++ )
 	{
 		_ds->GetEnhancedIO().SetDigitalConfig(i, DriverStationEnhancedIO::kInputPullDown);
 	}
 	
-}
+}*/
 
 
 BeastController::~BeastController()
@@ -56,7 +53,7 @@ bool BeastController::minibotDeployed()
 
 bool BeastController::digitalIn(UINT32 pin)
 {
-	return _ds->GetEnhancedIO().GetDigital(pin);
+	return _ds->GetDigitalIn(pin);
 }
 
 AutonomousPosition BeastController::autonomousPosition()
