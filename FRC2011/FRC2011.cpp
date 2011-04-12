@@ -295,11 +295,6 @@ public:
 		_teleopStartTime = GetTime();
 	}
 	
-	bool IsMinibotDeploymentPeriod()
-	{
-		return (GetTime() - _teleopStartTime) > MINIBOT_DEPLOYMENT_WAIT_TIME;
-	}
-	
 	void TeleopPeriodic(void)
 	{
 		//if ( _driverStation->IsNewControlData() )
@@ -308,8 +303,14 @@ public:
 			GamepadArmControl(_armGamepad);
 			
 			
+			double elapsedTime = GetTime() - _teleopStartTime;
+			bool deploymentPeriod = elapsedTime > MINIBOT_DEPLOYMENT_WAIT_TIME;
+			bool oneSecondRemaining = elapsedTime >= (TELEOP_DURATION - 1);
+			
+			
+			
 			//	minibot deployment
-			if ( _beastController->minibotDeployed() && IsMinibotDeploymentPeriod() )
+			if ( _beastController->minibotDeployed() && deploymentPeriod && !oneSecondRemaining )
 			{
 				//_arm->raiseShoulder();
 				//Wait(1);	//	FIXME: is this necessary???????????
