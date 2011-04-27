@@ -112,14 +112,6 @@ public:
 		printf("RobotInit() completed.\n");
 	}
 	
-	/*
-	void DisabledInit(void) {
-		// Move the cursor down a few, since we'll move it back up in periodic.
-		printf("\x1b[2B");
-	}*/
-	
-	
-	
 	
 
 
@@ -143,14 +135,6 @@ public:
 
 	void AutonomousPeriodic(void)
 	{
-
-
-
-
-
-
-
-
 		LogToDashboard();
 	}
 
@@ -175,19 +159,6 @@ public:
 	
 	/***************	TeleOp		***************/
 	
-	/*
-	void JoystickArmControl(Joystick *j)
-	{
-		//	elbow control w/y-axis of joystick
-		_arm->_elbowController->Set( -(j->GetY()) );
-		
-		//	FIXME: add stuff for shoulder
-	}
-	*/
-	
-	
-	
-	
 	void GamepadDrive(Gamepad *gp)
 	{
 		float throttle;
@@ -203,20 +174,6 @@ public:
 	}
 	
 	
-	/*
-	//	arcade drive w/a joystick
-	void JoystickDrive(Joystick *j)
-	{
-		float throttle = j->GetThrottle();	//	-1 to 1
-		throttle -= 1;	//	0 to -2
-		throttle /= -2;	//	0 to 1 - backwards from the default setup
-		
-		
-		_robotDrive->SetMaxOutput(throttle);
-		_robotDrive->ArcadeDrive(j);
-	}
-	*/
-	
 	void GamepadArmControl(Gamepad *gp)
 	{
 		//	arm shoulder control
@@ -224,33 +181,6 @@ public:
 			_arm->lowerShoulder();
 		else if ( gp->GetButton(Gamepad::kTopButton) )
 			_arm->raiseShoulder();
-		
-		
-		/*
-		if ( gp->GetButton(Gamepad::kRightTopTrigger) )
-		{
-			_rollerGrip->release();
-		}
-		else if ( gp->GetButton(Gamepad::kRightBottomTrigger) )
-		{
-			_rollerGrip->intake();
-		}
-		else if ( gp->GetButton(Gamepad::kLeftTopTrigger) )
-		{
-			_rollerGrip->rotateUp();
-		}
-		else if ( gp->GetButton(Gamepad::kLeftBottomTrigger) )
-		{
-			_rollerGrip->rotateDown();
-		}
-		else
-		{
-			_rollerGrip->disable();
-			//	_rollerGrip->disable();
-		}
-		*/
-		
-		
 		
 		
 		
@@ -261,25 +191,8 @@ public:
 		else
 			_claw->close();
 		
-		/*
-		//	shoulder - right joystick
-		if ( gp->GetRightY() > .5 )
-		{
-			_arm->lowerShoulder();
-		}
-		else if ( gp->GetRightY() < -.5 )
-		{
-			_arm->raiseShoulder();
-		}*/
 		
 		
-		//	elbow - left joystick
-		/*
-		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
-		SmartDashboard::Log(stick, "Elbow Control Stick");
-		double elbowPower = stick * -_arm->recommendedElbowPowerForDirection(SIGN(stick));
-		_arm->_elbowController->Set(elbowPower);
-		*/
 		
 		double stick = gp->GetLeftY();	//	FIXME: is the minus sign necessary????
 		SmartDashboard::Log(stick, "Elbow Control Stick");
@@ -308,7 +221,6 @@ public:
 			bool oneSecondRemaining = elapsedTime >= (TELEOP_DURATION - 1);
 			
 			
-			
 			//	minibot deployment
 			if ( _beastController->minibotDeployed() && deploymentPeriod && !oneSecondRemaining )
 			{
@@ -323,10 +235,8 @@ public:
 			
 		//}
 		
-		
 		LogToDashboard();
 	}
-	
 };
 
 START_ROBOT_CLASS(FRC2011);
