@@ -71,7 +71,9 @@ public:
 	//void lowerElbow();
 
 	
-	void setElbowAngle(float angle);
+	
+	//float elbowPosition();
+	//void setElbowAngle(float angle);
 	bool positionOutOfRangeForElbow(float position);
 	float restrictedElbowPosition(float position);
 	//void setAbsoluteElbowAngle(float absAngle);

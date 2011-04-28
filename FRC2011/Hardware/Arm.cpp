@@ -91,7 +91,7 @@ void Arm::lowerElbow()
 */
 
 
-
+/*
 void Arm::setElbowAngle(float angle)
 {
 	if ( angle > ELBOW_MAX_ANGLE )
@@ -103,7 +103,7 @@ void Arm::setElbowAngle(float angle)
 
 	//	set PID
 	_elbowPIDController->SetSetpoint(_elbowTarget);
-}
+}*/
 
 double Arm::recommendedElbowPowerForDirection(int direction)
 {

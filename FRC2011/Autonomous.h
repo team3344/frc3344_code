@@ -7,6 +7,10 @@ int AutonomousTask()
 		_arm->raiseShoulder();
 		
 		
+		//	FIXME: set the elbowTarget to something better!!!!!!!!!!!!!!!!!
+		double elbowTarget = 3.14159 / 2;	//	forearm perpindicular to back arm
+		
+		
 		
 		_robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 		_robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
@@ -147,6 +151,34 @@ int AutonomousTask()
 			if (binaryValue != 0) previousValue = binaryValue;
 			oldTimeInSeconds = timeInSeconds;
 			Wait(0.01);
+			
+			
+			
+			
+			
+			
+			
+			
+			//	BEGIN ELBOW CONTROL
+			
+			
+			double minPower = .4;
+			double maxPower = .65;
+			
+			
+			double current = _arm->elbowAngle();
+			double error = elbowTarget - current;
+			
+			double power = error / 3.14159 * (maxPower - minPower) + minPower;
+			SmartDashboard::Log(current, "Current Elbow Angle");
+			SmartDashboard::Log(elbowTarget, "Elbow Target");
+			SmartDashboard::Log(error, "Elbow Error");
+			SmartDashboard::Log(power, "Elbow Power");
+			
+			_arm->_elbowController->Set(power);	//	FIXME: correct???
+			
+			
+			//	END ELBOW CONTROL
 		}
 		// stop driving when finished
 		_robotDrive->ArcadeDrive(0.0, 0.0);
@@ -156,6 +188,29 @@ int AutonomousTask()
 		_robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, false);
 		_robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
 		_robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, false);
+		
+		
+		
+		
+		
+		
+		//	FIXME: do tube placement here!!!!!!!!!!
+		
+		
+		
+		
+		
+		//	backup at 40% power for 1.5 seconds
+		_robotDrive->ArcadeDrive(-.4, -.4);
+		Wait(1.5);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		return 1;
 	}

@@ -100,6 +100,11 @@ public:
 		_arm->logInfo();
 		
 		_lightSensors->logInfo();
+		
+		
+		//	minibot deployment
+		SmartDashboard::Log(MinibotDeployable(), "Minibot Deployable");
+		SmartDashboard::Log(_minibotDeployerSolenoid->Get(), "Minibot Deployed");
 	}
 	
 	
@@ -198,7 +203,6 @@ public:
 		SmartDashboard::Log(stick, "Elbow Control Stick");
 		double elbowPower = stick * -ELBOW_MAX_POWER;
 		_arm->_elbowController->Set(elbowPower);
-		
 	}
 	
 	
@@ -206,6 +210,15 @@ public:
 	void TeleopInit(void)
 	{
 		_teleopStartTime = GetTime();
+	}
+	
+	bool MinibotDeployable()
+	{
+		double elapsedTime = GetTime() - _teleopStartTime;
+		bool deploymentPeriod = elapsedTime > MINIBOT_DEPLOYMENT_WAIT_TIME;
+		bool oneSecondRemaining = elapsedTime >= (TELEOP_DURATION - 1);
+		
+		return deploymentPeriod && !oneSecondRemaining;
 	}
 	
 	void TeleopPeriodic(void)
@@ -216,16 +229,9 @@ public:
 			GamepadArmControl(_armGamepad);
 			
 			
-			double elapsedTime = GetTime() - _teleopStartTime;
-			bool deploymentPeriod = elapsedTime > MINIBOT_DEPLOYMENT_WAIT_TIME;
-			bool oneSecondRemaining = elapsedTime >= (TELEOP_DURATION - 1);
 			
-			
-			//	minibot deployment
-			if ( _beastController->minibotDeployed() && deploymentPeriod && !oneSecondRemaining )
+			if ( MinibotDeployable() && _beastController->minibotDeployed() )
 			{
-				//_arm->raiseShoulder();
-				//Wait(1);	//	FIXME: is this necessary???????????
 				_minibotDeployerSolenoid->Set(DoubleSolenoid::kForward);
 			}
 			else
