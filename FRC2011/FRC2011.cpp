@@ -230,7 +230,7 @@ public:
 			
 			
 			
-			if ( MinibotDeployable() && _beastController->minibotDeployed() )
+			if ( _beastController->minibotDeployed() )
 			{
 				_minibotDeployerSolenoid->Set(DoubleSolenoid::kForward);
 			}
