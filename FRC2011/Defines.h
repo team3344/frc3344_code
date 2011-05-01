@@ -44,7 +44,7 @@ const UINT32 CLAW_RELAY_CHANNEL = 2;
 
 
 //	arm
-const UINT32 ELBOW_POT_CHANNEL = 7;
+const UINT32 ELBOW_POT_CHANNEL = 8;	//	FIXME: it's really port 8?
 const UINT32 ELBOW_CONTROLLER_CHANNEL = 5;
 
 const float ELBOW_MAX_POWER = .59;
